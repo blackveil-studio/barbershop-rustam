@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — strony nie znaleziono | Rustam Barbershop</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .notfound{
+    min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:120px var(--gutter) 60px; position:relative; overflow:hidden;
+  }
+  .notfound::before{
+    content:""; position:absolute; inset:0; opacity:.5;
+    background-image:linear-gradient(45deg, var(--bg-soft) 25%, transparent 25%, transparent 75%, var(--bg-soft) 75%),
+      linear-gradient(45deg, var(--bg-soft) 25%, transparent 25%, transparent 75%, var(--bg-soft) 75%);
+    background-size:64px 64px; background-position:0 0, 32px 32px;
+    mask-image:radial-gradient(circle at 50% 40%, black 0%, transparent 62%);
+  }
+  .notfound-num{
+    position:relative; font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(6rem,22vw,15rem); color:var(--paper); line-height:.9;
+  }
+  .notfound-num em{color:var(--wood-light); font-style:italic}
+  .notfound h1{position:relative; font-size:clamp(1.6rem,3vw,2.2rem); color:var(--paper); margin-top:18px}
+  .notfound p{position:relative; margin-top:16px; max-width:44ch; color:var(--cream-dim)}
+  .notfound .actions{position:relative; margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">RUSTAM <strong>barbershop</strong><span>Warszawa</span></a>
+  <nav class="main-nav">
+    <a href="index.html#o-nas">O nas</a>
+    <a href="index.html#cennik">Cennik</a>
+    <a href="index.html#zespol">Zespół</a>
+    <a href="school.html">Szkoła barberska</a>
+    <a href="https://barberschoolrustam.booksy.com" target="_blank" rel="noopener" class="btn btn-primary">Umów wizytę</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<main class="notfound">
+  <div class="notfound-num">4<em>0</em>4</div>
+  <h1>Ta linia nie została doprowadzona do końca.</h1>
+  <p>Strony, której szukasz, tu nie ma — pewnie przycięliśmy adres trochę za krótko. Wróć na stronę główną albo od razu umów wizytę.</p>
+  <div class="actions">
+    <a href="index.html" class="btn btn-primary">Strona główna</a>
+    <a href="https://barberschoolrustam.booksy.com" target="_blank" rel="noopener" class="btn btn-ghost">Umów wizytę</a>
+  </div>
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
