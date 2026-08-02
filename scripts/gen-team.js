@@ -139,7 +139,7 @@ const people = [
     slug: 'maria',
     name: 'Maria',
     role: 'Top Barber · Team Leader',
-    img: null,
+    img: 'portrait-maria.webp',
     lead: 'Doświadczona barberka, u której wszystko zawsze pod kontrolą. Team leader zespołu — czuwa nad jakością każdej wizyty.',
     specialties: ['Top Barber', 'Wieloletnie doświadczenie', 'Team leader'],
     gallery: [9, 10, 11, 12],

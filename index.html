@@ -23,6 +23,7 @@
     <a href="#opinie">Opinie</a>
     <a href="school.html">Szkoła barberska</a>
     <a href="#kontakt">Kontakt</a>
+    <span class="lang-switch"><a href="index.html" class="is-active">PL</a>·<a href="ru/index.html">RU</a>·<a href="uk/index.html">UA</a></span>
     <a href="https://barberschoolrustam.booksy.com" target="_blank" rel="noopener" class="btn btn-primary">Umów wizytę</a>
   </nav>
   <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -56,13 +57,13 @@
   </div>
 
   <!-- ABOUT -->
-  <section id="o-nas" class="section section-dark">
+  <section id="o-nas" class="section section-paper">
     <div class="wrap about">
       <div class="about-copy" data-reveal>
         <span class="eyebrow">O barbershopie</span>
         <h2>Rustam zaczynał od jednego fotela. Dziś prowadzi dwa salony i uczy kolejnych barberów.</h2>
         <p>Rustam Barbershop to miejsce, które rozrosło się z pojedynczego stanowiska do dwóch lokalizacji w Warszawie — przy Chmielnej i na Alejach Jerozolimskich, gdzie działa też nasza szkoła barberska. Zespół mówi po polsku, angielsku, rosyjsku, ukraińsku i azerbejdżańsku, więc każdy klient czuje się tu jak u siebie.</p>
-        <p>Nie gonimy za liczbą klientów w ciągu godziny. Wolimy, żebyś wyszedł z fryzurą, która trzyma formę tygodniami, nie dniami.</p>
+        <p>Jak sami mówimy o sobie: nie zależy nam na ilości, a tylko na jakości. Do każdego klienta podchodzimy indywidualnie, a metoda strzyżenia, której używamy, zapewnia prawidłowe odrastanie fryzury — dzięki temu wygląda dobrze niezależnie od tego, jak często wracasz do fotela.</p>
         <ul class="locations-list">
           <li><b>Rustam Barbershop</b><span>Chmielna 106 · 4,9★ (722)</span></li>
           <li><b>Rustam Barbershop 2 · Szkoła</b><span>Al. Jerozolimskie 49 · 5,0★ (23)</span></li>
@@ -84,22 +85,33 @@
       </div>
       <div class="services-grid" data-reveal-stagger>
         <div class="service-card">
-          <span class="num">01</span>
-          <h3>Strzyżenie &amp; Combo</h3>
-          <p>Precyzyjne cięcie dopasowane do kształtu głowy i struktury włosów — od klasyki po fade. Combo łączy strzyżenie z modelowaniem brody.</p>
-          <span class="from">od 115 zł</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm14-8L9 17M14 10l6 8"/></svg>
+          <h3>Strzyżenie</h3>
+          <p class="tagline">Od klasyki po fade — cięcie dopasowane do kształtu głowy i struktury włosów.</p>
+          <ul>
+            <li><span>Strzyżenie</span><b>od 115 zł</b></li>
+            <li><span>Combo (strzyżenie + broda)</span><b>od 165 zł</b></li>
+            <li><span>Strzyżenia damskie (Daria)</span><b>wycena indywidualna</b></li>
+          </ul>
         </div>
         <div class="service-card">
-          <span class="num">02</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c-2 3-2 5-1 7-2 0-4 2-4 5a5 5 0 0 0 10 0c0-3-2-5-4-5 1-2 1-4-1-7Z"/></svg>
           <h3>Broda &amp; golenie</h3>
-          <p>Design brody, gorący ręcznik, precyzyjne linie. Zabieg, po którym broda wygląda na zadbaną tygodniami, nie dniami.</p>
-          <span class="from">w cenie Combo</span>
+          <p class="tagline">Design brody, gorący ręcznik, precyzyjne linie.</p>
+          <ul>
+            <li><span>Modelowanie brody</span><b>w cenie Combo</b></li>
+            <li><span>Cover włosów (tonowanie siwe)</span><b>80 zł</b></li>
+          </ul>
         </div>
         <div class="service-card">
-          <span class="num">03</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v4M8 5l1.5 3M16 5l-1.5 3M4 13c2-1 4-1 8-1s6 0 8 1M6 13c0 5 2.5 8 6 8s6-3 6-8"/></svg>
           <h3>SPA for men</h3>
-          <p>Peeling skóry głowy, scrub twarzy, black mask, depilacja nosa/brwi/uszu. Pełna pielęgnacja dla mężczyzn, nie tylko strzyżenie.</p>
-          <span class="from">od 20 zł</span>
+          <p class="tagline">Pełna pielęgnacja, nie tylko strzyżenie.</p>
+          <ul>
+            <li><span>Peeling skóry głowy</span><b>20 zł</b></li>
+            <li><span>SPA (scrub + black mask)</span><b>70 zł</b></li>
+            <li><span>Depilacja (nos/brwi/uszy)</span><b>od 15 zł</b></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -134,15 +146,18 @@
         </div>
       </div>
 
-      <div class="addons" data-reveal>
-        <div class="addon-row"><span>Peeling skóry głowy</span><b>20 zł</b></div>
-        <div class="addon-row"><span>SPA (scrub + black mask)</span><b>70 zł</b></div>
-        <div class="addon-row"><span>Cover włosów (tonowanie siwe)</span><b>80 zł</b></div>
-        <div class="addon-row"><span>Scrub (peeling twarzy)</span><b>40 zł</b></div>
-        <div class="addon-row"><span>Black mask</span><b>30 zł</b></div>
-        <div class="addon-row"><span>Depilacja — 1 strefa (nos/brwi/uszy)</span><b>15 zł</b></div>
-        <div class="addon-row"><span>Depilacja — 2 strefy</span><b>30 zł</b></div>
-        <div class="addon-row"><span>Depilacja — 3 strefy</span><b>50 zł</b></div>
+      <div class="addons-block" data-reveal>
+        <div class="addons-head"><h3>SPA for men &amp; dodatki</h3><span class="eyebrow">Do każdej wizyty</span></div>
+        <div class="addons">
+          <div class="addon-row"><span>Peeling skóry głowy</span><b>20 zł</b></div>
+          <div class="addon-row"><span>SPA (scrub + black mask)</span><b>70 zł</b></div>
+          <div class="addon-row"><span>Cover włosów (tonowanie siwe)</span><b>80 zł</b></div>
+          <div class="addon-row"><span>Scrub (peeling twarzy)</span><b>40 zł</b></div>
+          <div class="addon-row"><span>Black mask</span><b>30 zł</b></div>
+          <div class="addon-row"><span>Depilacja — 1 strefa (nos/brwi/uszy)</span><b>15 zł</b></div>
+          <div class="addon-row"><span>Depilacja — 2 strefy</span><b>30 zł</b></div>
+          <div class="addon-row"><span>Depilacja — 3 strefy</span><b>50 zł</b></div>
+        </div>
       </div>
 
       <div class="loyalty-note" data-reveal>
@@ -175,7 +190,7 @@
   </section>
 
   <!-- TEAM -->
-  <section id="zespol" class="section section-soft">
+  <section id="zespol" class="section section-paper">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2>Zespół</h2>
@@ -183,34 +198,35 @@
       </div>
       <div class="team-grid" data-reveal-stagger>
         <a class="team-card" href="team/rustam.html">
-          <img src="img/team/card-barber-rustam-card.webp" alt="Rustam — Chief Barber" loading="lazy">
+          <img src="img/team/rustam-portrait.webp" alt="Rustam — Chief Barber" loading="lazy">
           <div class="info"><span class="role">Chief Barber</span><h3>Rustam</h3></div>
         </a>
         <a class="team-card" href="team/ilja.html">
-          <img src="img/team/card-barber-ilja.webp" alt="Ilja — Top Barber" loading="lazy">
+          <img src="img/team/portrait-ilja.webp" alt="Ilja — Top Barber" loading="lazy">
           <div class="info"><span class="role">Top Barber · nauczyciel</span><h3>Ilja</h3></div>
         </a>
-        <a class="team-card no-photo" href="team/maria.html">
+        <a class="team-card" href="team/maria.html">
+          <img src="img/team/portrait-maria.webp" alt="Maria — Top Barber" loading="lazy">
           <div class="info"><span class="role">Top Barber · Team Leader</span><h3>Maria</h3></div>
         </a>
         <a class="team-card" href="team/daria.html">
-          <img src="img/team/card-barber-daria.webp" alt="Daria — Barber" loading="lazy">
+          <img src="img/team/portrait-daria.webp" alt="Daria — Barber" loading="lazy">
           <div class="info"><span class="role">Barber (damskie i męskie)</span><h3>Daria</h3></div>
         </a>
         <a class="team-card" href="team/varvara.html">
-          <img src="img/team/card-barber-varvara.webp" alt="Varvara — Barber" loading="lazy">
+          <img src="img/team/portrait-varvara.webp" alt="Varvara — Barber" loading="lazy">
           <div class="info"><span class="role">Barber</span><h3>Varvara</h3></div>
         </a>
         <a class="team-card" href="team/sandra.html">
-          <img src="img/team/card-barber-sandra.webp" alt="Sandra — Barber" loading="lazy">
+          <img src="img/team/portrait-sandra.webp" alt="Sandra — Barber" loading="lazy">
           <div class="info"><span class="role">Barber</span><h3>Sandra</h3></div>
         </a>
         <a class="team-card" href="team/nikita.html">
-          <img src="img/team/card-barber-nikita.webp" alt="Nikita — Barber" loading="lazy">
+          <img src="img/team/portrait-nikita.webp" alt="Nikita — Barber" loading="lazy">
           <div class="info"><span class="role">Barber</span><h3>Nikita</h3></div>
         </a>
         <div class="team-card">
-          <img src="img/team/card-admin-dominika.webp" alt="Dominika — Admin" loading="lazy">
+          <img src="img/team/portrait-dominika.webp" alt="Dominika — Admin" loading="lazy">
           <div class="info"><span class="role">Admin</span><h3>Dominika</h3></div>
         </div>
       </div>
@@ -225,7 +241,7 @@
           <span class="num">4,9</span>
           <div>
             <div class="stars">★★★★★</div>
-            <div class="count">722 opinie na Google · Chmielna 106</div>
+            <div class="count">722 opinie na Google · 898 opinii na Booksy (5,0)</div>
           </div>
         </div>
       </div>
@@ -237,6 +253,16 @@
         </div>
         <div class="review-card">
           <span class="stars">★★★★★</span>
+          <p>«Byłem na combo, depilacji i farbowaniu brody. Wyszedłem zadowolony!»</p>
+          <div class="who"><span>Wojtek</span><span>Booksy · klient Sandry</span></div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <p>«Amazing service, attention to detail, I recommend.»</p>
+          <div class="who"><span>Alexandre</span><span>Booksy · klient Nikity</span></div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
           <p>«Честно, давно не выходил после стрижки настолько довольный. Варвара сделала прям то, что нужно — без "ну вроде нормально", а реально вау.»</p>
           <div class="who"><span>Денис Петриков</span><span>Google · 2 mies. temu</span></div>
         </div>
@@ -245,12 +271,17 @@
           <p>«Илья просто настоящий творец, мастер своего дела! Приятный коллектив, пока ожидаешь стрижку, могут чем-то угостить.»</p>
           <div class="who"><span>Artur</span><span>Google · Rustam Barbershop 2</span></div>
         </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <p>«Настолько аккуратно, быстро и профессионально подстригли, что не успел досмотреть фильм. 5 Рустамов из 5 😭😁»</p>
+          <div class="who"><span>Никита</span><span>Booksy · klient Darji</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- REELS -->
-  <section id="atmosfera" class="section section-soft">
+  <section id="atmosfera" class="section section-paper">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2>Atmosfera</h2>
@@ -263,10 +294,13 @@
       </div>
       <div class="reels-grid" data-reveal-stagger>
         <div class="reel" data-cat="work"><video src="videos/work-1.mp4" muted loop playsinline preload="metadata"></video></div>
-        <div class="reel" data-cat="work"><video src="videos/work-2.mp4" muted loop playsinline preload="metadata"></video></div>
         <div class="reel" data-cat="humor"><video src="videos/humor-1.mp4" muted loop playsinline preload="metadata"></video></div>
-        <div class="reel" data-cat="work"><video src="videos/work-3.mp4" muted loop playsinline preload="metadata"></video></div>
+        <div class="reel" data-cat="work"><video src="videos/work-2.mp4" muted loop playsinline preload="metadata"></video></div>
         <div class="reel" data-cat="humor"><video src="videos/humor-2.mp4" muted loop playsinline preload="metadata"></video></div>
+        <div class="reel" data-cat="work"><video src="videos/work-3.mp4" muted loop playsinline preload="metadata"></video></div>
+        <div class="reel" data-cat="humor"><video src="videos/humor-3.mp4" muted loop playsinline preload="metadata"></video></div>
+        <div class="reel" data-cat="work"><video src="videos/work-4.mp4" muted loop playsinline preload="metadata"></video></div>
+        <div class="reel" data-cat="humor"><video src="videos/humor-4.mp4" muted loop playsinline preload="metadata"></video></div>
       </div>
     </div>
   </section>
