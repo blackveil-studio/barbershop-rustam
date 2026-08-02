@@ -1,8 +1,62 @@
-// Header scroll state
+// Header scroll state + hero parallax
 const header = document.querySelector('.site-header');
-const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
+const heroImg = document.querySelector('.hero-media img');
+let ticking = false;
+const onScroll = () => {
+  header.classList.toggle('is-scrolled', window.scrollY > 40);
+  if (heroImg && !ticking) {
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = Math.min(window.scrollY, 900);
+      heroImg.style.transform = `translateY(${y * 0.12}px) scale(1.02)`;
+      ticking = false;
+    });
+  }
+};
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
+
+// Hero headline: word-by-word entrance
+const heroH1 = document.querySelector('.hero h1');
+if (heroH1 && !heroH1.dataset.split) {
+  heroH1.dataset.split = '1';
+  const walk = (node) => {
+    const out = [];
+    node.childNodes.forEach(child => {
+      if (child.nodeType === 3) {
+        child.textContent.split(/(\s+)/).forEach(w => {
+          if (w.trim() === '') { out.push(document.createTextNode(w)); }
+          else { const s = document.createElement('span'); s.className = 'word'; s.textContent = w; out.push(s); }
+        });
+      } else {
+        const em = document.createElement('em');
+        em.append(...walk(child));
+        out.push(em);
+      }
+    });
+    return out;
+  };
+  const words = walk(heroH1);
+  heroH1.textContent = '';
+  heroH1.append(...words);
+  requestAnimationFrame(() => {
+    heroH1.querySelectorAll('.word').forEach((w, i) => {
+      w.style.transitionDelay = `${i * 0.045}s`;
+      requestAnimationFrame(() => w.classList.add('is-in'));
+    });
+  });
+}
+
+// Magnetic buttons
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) * 0.25;
+    const y = (e.clientY - r.top - r.height / 2) * 0.35;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
 
 // Mobile nav
 const navToggle = document.querySelector('.nav-toggle');
