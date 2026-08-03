@@ -259,7 +259,7 @@ section{position:relative}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
 
 /* ===================== ABOUT ===================== */
-.about{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(40px,6vw,90px); align-items:center}
+.about{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(40px,6vw,90px); align-items:start}
 .about-copy p{color:var(--ink-dim); font-size:1.03rem; margin-top:20px; max-width:52ch}
 .about-copy p + p{margin-top:14px}
 .about-figure{position:relative}
@@ -322,7 +322,7 @@ section{position:relative}
 .loyalty-note .pill{background:var(--red); color:var(--paper); padding:.4em .9em; border-radius:2px; font-weight:700; font-size:.76rem; letter-spacing:.04em; white-space:nowrap}
 
 /* ===================== PORTFOLIO — print-mounted masonry ===================== */
-.portfolio-grid{column-count:4; column-gap:22px}
+.portfolio-grid{column-count:3; column-gap:22px}
 .portfolio-grid figure{
   break-inside:avoid; margin:0 0 22px; background:#fff; padding:10px 10px 0;
   box-shadow:0 24px 40px -30px rgba(19,18,16,.3); position:relative; overflow:hidden;
