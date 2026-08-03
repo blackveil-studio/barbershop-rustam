@@ -102,10 +102,17 @@ reelsTabs.forEach(tab => {
 document.querySelectorAll('.reel').forEach(reel => {
   const video = reel.querySelector('video');
   if (!video) return;
+  const playIcon = document.createElement('div');
+  playIcon.className = 'play-icon';
+  playIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.35)"/><path d="M10 8l6 4-6 4V8z"/></svg>';
+  reel.appendChild(playIcon);
+  video.addEventListener('play', () => reel.classList.add('is-playing'));
+  video.addEventListener('pause', () => reel.classList.remove('is-playing'));
   reel.addEventListener('mouseenter', () => video.play().catch(() => {}));
   reel.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-  reel.addEventListener('click', () => {
-    if (video.paused) { video.play(); } else { video.pause(); }
+  reel.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }
   });
 });
 
