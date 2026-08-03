@@ -176,6 +176,15 @@ h1,h2,h3,h4{
 .main-nav a.btn-primary:hover{color:var(--paper)}
 .main-nav a.btn-primary::after{display:none}
 
+.nav-icon{
+  position:absolute; left:50%; top:-22px; transform:translate(-50%,6px);
+  width:15px; height:15px; color:var(--accent);
+  opacity:0; transition:opacity .35s var(--ease-out), transform .35s var(--ease-out);
+  pointer-events:none;
+}
+.main-nav a:hover .nav-icon{opacity:1; transform:translate(-50%,0)}
+.main-nav a.btn-primary .nav-icon{display:none}
+
 .nav-toggle{display:none}
 
 .lang-switch{display:flex; align-items:center; gap:6px; font-size:.72rem; letter-spacing:.06em}
@@ -263,6 +272,39 @@ section{position:relative}
   display:flex; justify-content:space-between; align-items:flex-end; gap:40px;
   margin-bottom:clamp(28px,4vw,48px);
 }
+
+/* ===================== SECTION BADGE (looping icon ornament) ===================== */
+.section-badge{display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:22px}
+.section-badge .badge-line{
+  flex:1; max-width:110px; height:1px; position:relative;
+  background:linear-gradient(90deg, transparent, var(--line-light) 65%, var(--line-light) 100%);
+}
+.section-badge .badge-line::after{
+  content:""; position:absolute; right:-3px; top:50%; width:5px; height:5px;
+  background:var(--accent); transform:translateY(-50%) rotate(45deg);
+}
+.section-badge .badge-line.is-end{
+  background:linear-gradient(90deg, var(--line-light) 0%, var(--line-light) 35%, transparent 100%);
+}
+.section-badge .badge-line.is-end::after{left:-3px; right:auto}
+.section-badge .badge-svg{width:26px; height:26px; color:var(--accent-dim); flex-shrink:0; overflow:visible}
+
+.badge-aperture{transform-origin:12px 12px; animation:badgeAperture 5s linear infinite}
+@keyframes badgeAperture{to{transform:rotate(360deg)}}
+
+.badge-tag{transform-origin:4px 4px; animation:badgeTag 3s ease-in-out infinite}
+@keyframes badgeTag{0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)}}
+
+.badge-blade-a{transform-origin:7.6px 7.6px; animation:badgeSnipA 2.6s ease-in-out infinite}
+.badge-blade-b{transform-origin:7.6px 16.4px; animation:badgeSnipB 2.6s ease-in-out infinite}
+@keyframes badgeSnipA{0%,100%{transform:rotate(0)} 50%{transform:rotate(-10deg)}}
+@keyframes badgeSnipB{0%,100%{transform:rotate(0)} 50%{transform:rotate(10deg)}}
+
+.badge-star{transform-origin:12px 12px; animation:badgeStar 2.8s ease-in-out infinite}
+@keyframes badgeStar{0%,100%{transform:scale(1); opacity:.8} 50%{transform:scale(1.14); opacity:1}}
+
+.badge-play{transform-origin:12.5px 12px; animation:badgePlay 2.2s ease-in-out infinite}
+@keyframes badgePlay{0%,100%{transform:scale(1); opacity:.85} 50%{transform:scale(1.16); opacity:1}}
 .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
 
@@ -288,11 +330,11 @@ section{position:relative}
 
 /* ===================== SERVICES — editorial menu ===================== */
 .menu-layout{display:grid; grid-template-columns:.78fr 1.22fr; gap:clamp(40px,6vw,90px)}
-.menu-intro{display:flex; flex-direction:column}
+.menu-intro{display:flex; flex-direction:column; align-self:start; position:sticky; top:112px}
 .menu-intro h2{font-size:clamp(2.1rem,4vw,3rem); margin-top:8px}
 .menu-intro p{margin-top:18px; color:var(--ink-dim); max-width:36ch}
-.menu-photo-wrap{margin-top:32px; flex:1 1 auto}
-.menu-photo{position:sticky; top:112px; height:min(58vh,540px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
+.menu-photo-wrap{margin-top:32px}
+.menu-photo{height:min(46vh,420px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
 .menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center 15%}
 .menu-list{display:flex; flex-direction:column; gap:44px}
 .menu-group h3{
@@ -336,27 +378,29 @@ section{position:relative}
 .loyalty-note{margin-top:28px; display:flex; gap:16px; align-items:center; font-size:.86rem; color:var(--ink-dim)}
 .loyalty-note .pill{background:var(--red); color:var(--paper); padding:.4em .9em; border-radius:2px; font-weight:700; font-size:.76rem; letter-spacing:.04em; white-space:nowrap}
 
-/* ===================== PORTFOLIO — asymmetric mosaic ===================== */
-.portfolio-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:170px; gap:14px}
-.portfolio-grid figure{
-  position:relative; overflow:hidden; box-shadow:0 24px 40px -30px rgba(19,18,16,.3);
+/* ===================== PORTFOLIO — vertical marquee gallery ===================== */
+.gallery-marquee{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  height:min(78vh,640px); overflow:hidden; position:relative;
 }
-.portfolio-grid figure:nth-child(1){grid-column:span 2; grid-row:span 2}
-.portfolio-grid figure:nth-child(4){grid-row:span 2}
-.portfolio-grid figure:nth-child(6){grid-column:span 2}
-.portfolio-grid .frame{width:100%; height:100%}
-.portfolio-grid img{
-  width:100%; height:100%; object-fit:cover; display:block; transition:transform 1s var(--ease-out);
+.gallery-marquee::before,.gallery-marquee::after{
+  content:""; position:absolute; left:0; right:0; height:90px; z-index:2; pointer-events:none;
+}
+.gallery-marquee::before{top:0; background:linear-gradient(180deg, var(--paper) 10%, transparent 100%)}
+.gallery-marquee::after{bottom:0; background:linear-gradient(0deg, var(--paper) 10%, transparent 100%)}
+.gallery-col{overflow:hidden; border-radius:2px}
+.gallery-track{display:flex; flex-direction:column; gap:16px; width:100%; will-change:transform}
+.gallery-track img{
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:2px;
   filter:grayscale(12%) sepia(6%) contrast(1.07) saturate(1.04);
+  box-shadow:0 20px 30px -24px rgba(19,18,16,.35);
 }
-.portfolio-grid figure:hover img{transform:scale(1.04)}
-.portfolio-grid figcaption{
-  position:absolute; left:0; right:0; bottom:0; padding:14px 16px 12px;
-  font-family:var(--sans); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--cream);
-  background:linear-gradient(0deg, rgba(10,9,7,.7) 0%, transparent 100%);
-  opacity:0; transition:opacity .3s;
-}
-.portfolio-grid figure:hover figcaption{opacity:1}
+.gallery-col--up .gallery-track{animation:galleryUp 34s linear infinite}
+.gallery-col--down .gallery-track{animation:galleryDown 34s linear infinite}
+.gallery-col--slow .gallery-track{animation-duration:46s}
+@keyframes galleryUp{from{transform:translateY(0)} to{transform:translateY(-50%)}}
+@keyframes galleryDown{from{transform:translateY(-50%)} to{transform:translateY(0)}}
+.gallery-marquee:hover .gallery-track{animation-play-state:paused}
 
 /* ===================== TEAM ===================== */
 .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
@@ -425,15 +469,15 @@ section{position:relative}
 
 /* ===================== CTA / BOOKING ===================== */
 .cta{
-  position:relative; padding-block:clamp(80px,10vw,130px); text-align:center; overflow:hidden;
+  position:relative; padding-block:clamp(110px,14vw,190px); text-align:center; overflow:hidden;
   background:var(--ink); isolation:isolate;
 }
 .cta-media{position:absolute; inset:0; z-index:0}
-.cta-media img{width:100%; height:100%; object-fit:cover; opacity:.4}
-.cta-media::after{content:""; position:absolute; inset:0; background:radial-gradient(80% 100% at 50% 100%, rgba(20,19,16,.4) 0%, var(--ink) 85%)}
+.cta-media img{width:100%; height:100%; object-fit:cover; object-position:center 32%; opacity:.68}
+.cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,14,11,.25) 0%, rgba(15,14,11,.35) 45%, rgba(15,14,11,.82) 100%)}
 .cta > .wrap{position:relative; z-index:1}
-.cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; margin-inline:auto}
-.cta p{margin-top:20px; color:var(--cream-dim)}
+.cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; margin-inline:auto; text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.cta p{margin-top:20px; color:var(--cream-dim); text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .cta .btn{margin-top:38px; padding:1.3em 2.6em; font-size:.92rem}
 
 /* ===================== FOOTER ===================== */
@@ -501,6 +545,7 @@ section{position:relative}
   }
   .main-nav.is-open{transform:none}
   .main-nav a{font-size:1.05rem}
+  .nav-icon{display:none}
   .main-nav .btn-primary{margin-top:10px}
   .nav-toggle{display:flex; flex-direction:column; align-items:flex-end; gap:6px; z-index:96; width:30px; padding:6px}
   .nav-toggle span{height:2px; border-radius:1px; background:var(--cream); width:100%; transition:.3s var(--ease-out)}
@@ -514,14 +559,12 @@ section{position:relative}
   .tier{grid-template-columns:auto 1fr; row-gap:16px}
   .tier-price{grid-column:1/3; display:flex; justify-content:space-between; text-align:left; padding-left:68px}
   .about, .menu-layout{grid-template-columns:1fr}
-  .menu-photo{position:static; height:auto; aspect-ratio:4/5}
+  .menu-intro{position:static}
+  .menu-photo{height:auto; aspect-ratio:4/5}
   .reviews-track{grid-template-columns:1fr}
   .review-card:nth-child(1){grid-row:auto}
   .review-card:not(:nth-child(1)){border-left:0; padding-left:0}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:220px}
-  .portfolio-grid figure:nth-child(1){grid-column:span 2; grid-row:span 2}
-  .portfolio-grid figure:nth-child(4),.portfolio-grid figure:nth-child(6){grid-column:span 1; grid-row:span 1}
-  .portfolio-grid figcaption{opacity:1; background:linear-gradient(0deg, rgba(10,9,7,.55) 0%, transparent 70%)}
+  .gallery-marquee{height:min(64vh,520px)}
   .hero-strip .wrap{grid-template-columns:1fr; gap:14px}
   .hero-strip div + div{border-left:0; padding-left:0; border-top:1px solid var(--line-dark); padding-top:14px}
   .section-paper .hero-strip div + div{border-color:var(--line-light)}
@@ -541,7 +584,7 @@ section{position:relative}
   .team-grid{grid-template-columns:1fr; max-width:340px; margin-inline:auto}
   .footer-top{grid-template-columns:1fr}
   .reel{width:58vw}
-  .portfolio-grid{grid-template-columns:1fr; grid-auto-rows:280px; max-width:420px; margin-inline:auto}
-  .portfolio-grid figure:nth-child(1){grid-column:span 1; grid-row:span 1}
+  .gallery-marquee{grid-template-columns:repeat(2,1fr); height:min(58vh,460px)}
+  .gallery-col--center{display:none}
   .cookie-banner{left:12px; right:12px; bottom:12px; padding:22px}
 }
