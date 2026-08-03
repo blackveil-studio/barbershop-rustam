@@ -1,14 +1,14 @@
 // Header scroll state + hero parallax
 const header = document.querySelector('.site-header');
-const heroImg = document.querySelector('.hero-media img');
+const heroImgs = document.querySelectorAll('.hero-media img');
 let ticking = false;
 const onScroll = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 40);
-  if (heroImg && !ticking) {
+  if (heroImgs.length && !ticking) {
     ticking = true;
     requestAnimationFrame(() => {
       const y = Math.min(window.scrollY, 900);
-      heroImg.style.transform = `translateY(${y * 0.12}px) scale(1.02)`;
+      heroImgs.forEach(img => { img.style.transform = `translateY(${y * 0.1}px) scale(1.04)`; });
       ticking = false;
     });
   }
@@ -24,7 +24,7 @@ if (heroH1 && !heroH1.dataset.split) {
     const out = [];
     node.childNodes.forEach(child => {
       if (child.nodeType === 3) {
-        child.textContent.split(/(\s+)/).forEach(w => {
+        child.textContent.split(/( )/).forEach(w => {
           if (w.trim() === '') { out.push(document.createTextNode(w)); }
           else { const s = document.createElement('span'); s.className = 'word'; s.textContent = w; out.push(s); }
         });
