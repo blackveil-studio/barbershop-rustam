@@ -1,22 +1,14 @@
-// Header scroll state + hero parallax + seam badge drift
+// Header scroll state + hero parallax
 const header = document.querySelector('.site-header');
 const heroImgs = document.querySelectorAll('.hero-media img');
-const seamInners = document.querySelectorAll('.seam-inner');
 let ticking = false;
 const onScroll = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 40);
-  if (!ticking) {
+  if (heroImgs.length && !ticking) {
     ticking = true;
     requestAnimationFrame(() => {
       const y = Math.min(window.scrollY, 900);
       heroImgs.forEach(img => { img.style.transform = `translateY(${y * 0.1}px) scale(1.04)`; });
-      const vh = window.innerHeight;
-      seamInners.forEach(el => {
-        const rect = el.parentElement.getBoundingClientRect();
-        const progress = (rect.top - vh / 2) / (vh / 2);
-        const clamped = Math.max(-1, Math.min(1, progress));
-        el.style.transform = `translateY(-50%) translateX(${(clamped * -46).toFixed(1)}px)`;
-      });
       ticking = false;
     });
   }
@@ -147,42 +139,35 @@ document.querySelectorAll('.reel').forEach(reel => {
   });
 });
 
-// Gallery: featured photo auto-rotates, click a rail thumb to feature it
-const galleryMarquee = document.querySelector('.gallery-marquee');
-if (galleryMarquee) {
-  const featureImg = galleryMarquee.querySelector('.gallery-feature-img');
-  const railThumbs = [...galleryMarquee.querySelectorAll('.gallery-col img')];
-  const rotationPool = [...galleryMarquee.querySelectorAll('.gallery-col img:not(.is-dup)')];
-  let rotationIndex = 0;
-  let rotateTimer = null;
+// Gallery: drag-to-scroll filmstrip (mouse drag + native touch scroll)
+const galleryDrag = document.querySelector('.gallery-drag');
+if (galleryDrag) {
+  let isDown = false, startX = 0, startScroll = 0, moved = false;
 
-  function showFeature(src, alt) {
-    featureImg.classList.add('is-fading');
-    setTimeout(() => {
-      featureImg.src = src;
-      featureImg.alt = alt || '';
-      featureImg.classList.remove('is-fading');
-    }, 450);
-  }
-
-  function restartRotation() {
-    if (rotateTimer) clearInterval(rotateTimer);
-    rotateTimer = setInterval(() => {
-      rotationIndex = (rotationIndex + 1) % rotationPool.length;
-      showFeature(rotationPool[rotationIndex].src, rotationPool[rotationIndex].alt);
-    }, 5000);
-  }
-
-  railThumbs.forEach(img => {
-    img.addEventListener('click', () => {
-      showFeature(img.src, img.alt);
-      const poolIdx = rotationPool.findIndex(p => p.src === img.src);
-      if (poolIdx !== -1) rotationIndex = poolIdx;
-      restartRotation();
-    });
+  galleryDrag.addEventListener('mousedown', (e) => {
+    isDown = true; moved = false;
+    galleryDrag.classList.add('is-dragging');
+    startX = e.pageX;
+    startScroll = galleryDrag.scrollLeft;
   });
-
-  if (rotationPool.length) restartRotation();
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    galleryDrag.classList.remove('is-dragging');
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    galleryDrag.scrollLeft = startScroll - dx;
+  });
+  // Prevent image click/drag-ghost right after a real drag
+  galleryDrag.addEventListener('click', (e) => {
+    if (moved) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  galleryDrag.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
 }
 
 // Spotlight glow that follows the cursor on team + review cards
