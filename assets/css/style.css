@@ -325,12 +325,19 @@ section{position:relative}
 }
 .badge-inner .section-badge{margin-bottom:0; gap:24px}
 .badge-inner .section-badge .badge-line{max-width:230px; height:1px; opacity:.75; transition:transform .5s var(--ease-spring)}
-.badge-inner .section-badge .badge-line::after{background:var(--cream); width:6px; height:6px}
+.badge-inner .section-badge .badge-line::after{background:var(--cream); width:13px; height:13px}
 .badge-inner .section-badge .badge-line::before{
-  content:""; position:absolute; right:11px; top:50%; width:4px; height:4px;
+  content:""; position:absolute; right:17px; top:50%; width:8px; height:8px;
   background:var(--cream); transform:translateY(-50%) rotate(45deg);
 }
-.badge-inner .section-badge .badge-line.is-end::before{left:11px; right:auto}
+.badge-inner .section-badge .badge-line.is-end::before{left:17px; right:auto}
+.badge-arrow-tip{
+  position:absolute; left:0; top:50%; width:0; height:0;
+  border-top:4px solid transparent; border-bottom:4px solid transparent;
+  border-right:9px solid var(--cream); opacity:.75;
+  transform:translateY(-50%);
+}
+.badge-line.is-end .badge-arrow-tip{left:auto; right:0; border-right:0; border-left:9px solid var(--cream)}
 .seam-badge:hover .section-badge .badge-line:first-child{transform:translateX(-16px)}
 .seam-badge:hover .section-badge .badge-line.is-end{transform:translateX(16px)}
 .badge-inner .badge-svg{color:var(--cream); width:64px; height:64px; overflow:visible}
@@ -342,15 +349,15 @@ section{position:relative}
 /* ---- #seam-experience: reference-scale rebuild (pilot badge, others still at old size) ---- */
 #seam-experience .seam-inner{transform:translateY(-28%)}
 #seam-experience .seam-badge{
-  padding:clamp(26px,7.2vw,52px) clamp(28px,7.5vw,54px) clamp(28px,7.5vw,54px);
+  padding:clamp(22px,6vw,42px) clamp(24px,6.4vw,44px) clamp(24px,6.4vw,44px);
 }
-#seam-experience .badge-inner{gap:clamp(14px,3.3vw,24px)}
-#seam-experience .badge-inner .section-badge{gap:clamp(14px,3.3vw,24px)}
-#seam-experience .badge-inner .section-badge .badge-line{max-width:clamp(50px,26vw,190px); width:clamp(50px,26vw,190px)}
-#seam-experience .badge-inner .badge-svg{width:clamp(36px,9vw,66px); height:clamp(36px,9vw,66px)}
-#seam-experience .seam-title{font-size:clamp(1.3rem,4.9vw,36px); letter-spacing:.17em}
-.hero-strip{padding-bottom:clamp(50px,18.6vw,134px)}
-#o-nas{padding-top:clamp(90px,27.5vw,198px)}
+#seam-experience .badge-inner{gap:clamp(12px,2.8vw,20px)}
+#seam-experience .badge-inner .section-badge{gap:clamp(12px,2.8vw,20px)}
+#seam-experience .badge-inner .section-badge .badge-line{max-width:clamp(40px,21vw,158px); width:clamp(40px,21vw,158px)}
+#seam-experience .badge-inner .badge-svg{width:clamp(30px,7.5vw,54px); height:clamp(30px,7.5vw,54px)}
+#seam-experience .seam-title{font-size:clamp(1.2rem,4vw,30px); letter-spacing:.17em}
+.hero-strip{padding-bottom:clamp(46px,15.5vw,112px)}
+#o-nas{padding-top:clamp(80px,23vw,166px)}
 
 /* per-icon character animations */
 .badge-icon-star, .badge-icon-shutter{animation:badgeSpin 8s linear infinite; transform-origin:center}
@@ -366,7 +373,7 @@ section{position:relative}
   animation:hourglassFlip 2.2s cubic-bezier(.65,.05,.36,1) forwards, hourglassSway 3.6s ease-in-out 2.2s infinite;
 }
 @keyframes hourglassFlip{from{transform:rotate(0deg)} to{transform:rotate(180deg)}}
-@keyframes hourglassSway{0%,100%{transform:rotate(180deg)} 50%{transform:rotate(173deg)}}
+@keyframes hourglassSway{0%,100%{transform:rotate(195deg)} 50%{transform:rotate(165deg)}}
 
 @media (max-width:640px){
   .seam-badge{padding:22px 26px}
