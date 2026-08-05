@@ -244,7 +244,7 @@ h1,h2,h3,h4{
   padding-block:22px;
 }
 .hero-strip dt{font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; color:var(--cream-faint); margin-bottom:6px}
-.hero-strip dd{font-size:.88rem; color:var(--cream-dim); font-family:var(--serif); font-size:1.05rem}
+.hero-strip dd{color:var(--cream); font-family:var(--serif); font-size:1.05rem}
 .hero-strip div + div{border-left:1px solid var(--line-dark); padding-left:clamp(16px,3vw,32px)}
 
 /* ===================== SECTION shell ===================== */
@@ -306,7 +306,7 @@ section{position:relative}
 .seam-inner{
   position:absolute; left:0; right:0; top:0;
   display:flex; justify-content:center;
-  transform:translateY(-50%);
+  transform:translateY(-38%);
   padding-inline:var(--gutter);
 }
 .seam-badge{
@@ -329,26 +329,21 @@ section{position:relative}
   background:linear-gradient(90deg, rgba(239,231,214,.3) 0%, rgba(239,231,214,.3) 35%, transparent 100%);
 }
 .seam-badge .badge-svg{color:var(--cream); width:40px; height:40px}
-.seam-title{
-  font-family:var(--sans); font-size:clamp(1.7rem,3.2vw,2.5rem); letter-spacing:.02em; text-transform:uppercase; font-weight:800;
-  color:var(--paper); white-space:nowrap; line-height:1;
-}
-.seam.is-icon-only .seam-badge{padding:clamp(30px,3.9vw,45px) clamp(51px,7.5vw,84px)}
-.seam.is-icon-only .seam-badge .badge-svg{width:45px; height:45px}
+.seam.is-icon-only .seam-badge{padding:clamp(18px,2.4vw,26px) clamp(51px,7.5vw,84px)}
+.seam.is-icon-only .seam-badge .badge-svg{width:36px; height:36px}
 @media (max-width:640px){
   .seam-badge{padding:24px 30px 20px}
   .seam-badge .badge-line{max-width:44px}
   .seam-badge .badge-svg{width:30px; height:30px}
-  .seam-title{font-size:1.3rem}
-  .seam.is-icon-only .seam-badge{padding:15px 22px}
-  .seam.is-icon-only .seam-badge .badge-svg{width:24px; height:24px}
+  .seam.is-icon-only .seam-badge{padding:14px 22px}
+  .seam.is-icon-only .seam-badge .badge-svg{width:22px; height:22px}
 }
 .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
 
 /* ===================== ABOUT ===================== */
 .about{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(40px,6vw,90px); align-items:start}
-.about-copy h2{line-height:1.42}
+.about-copy h2{line-height:1.55}
 .about-copy p{color:var(--ink-dim); font-size:1.03rem; margin-top:20px; max-width:52ch}
 .about-copy p + p{margin-top:14px}
 .about-figure{position:relative}
@@ -373,8 +368,8 @@ section{position:relative}
 .menu-intro h2{font-size:clamp(2.1rem,4vw,3rem)}
 .menu-intro p{margin-top:18px; color:var(--ink-dim); max-width:36ch}
 .menu-photo-wrap{margin-top:32px}
-.menu-photo{height:min(70vh,660px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
-.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center 19%}
+.menu-photo{height:min(65vh,600px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
+.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:58% 40%}
 .menu-list{display:flex; flex-direction:column; gap:44px}
 .menu-group h3{
   font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans); font-weight:700;
@@ -419,7 +414,7 @@ section{position:relative}
 
 /* ===================== PORTFOLIO — featured photo + marquee rails ===================== */
 .gallery-marquee{
-  display:grid; grid-template-columns:.85fr 1.5fr .85fr; gap:16px;
+  display:grid; grid-template-columns:.57fr 1.5fr .57fr; gap:16px;
   height:min(80vh,700px); overflow:hidden; position:relative;
 }
 .gallery-col{overflow:hidden; border-radius:2px}
@@ -546,7 +541,7 @@ section{position:relative}
 
 /* ===================== CTA / BOOKING ===================== */
 .cta{
-  position:relative; padding-block:clamp(64px,7vw,100px); text-align:center; overflow:hidden;
+  position:relative; padding-block:clamp(64px,7vw,100px); text-align:left; overflow:hidden;
   background:var(--ink); isolation:isolate;
 }
 .cta-media{position:absolute; inset:0; z-index:0}
@@ -556,7 +551,7 @@ section{position:relative}
 }
 .cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,14,11,.06) 0%, rgba(15,14,11,.1) 42%, rgba(15,14,11,.68) 100%)}
 .cta > .wrap{position:relative; z-index:1}
-.cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; margin-inline:auto; text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; text-shadow:0 4px 24px rgba(0,0,0,.6)}
 .cta p{margin-top:20px; color:var(--cream-dim); text-shadow:0 2px 12px rgba(0,0,0,.5)}
 .cta .btn{margin-top:38px; padding:1.3em 2.6em; font-size:.92rem}
 
