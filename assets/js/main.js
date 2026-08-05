@@ -1,14 +1,22 @@
-// Header scroll state + hero parallax
+// Header scroll state + hero parallax + seam badge drift
 const header = document.querySelector('.site-header');
 const heroImgs = document.querySelectorAll('.hero-media img');
+const seamInners = document.querySelectorAll('.seam-inner');
 let ticking = false;
 const onScroll = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 40);
-  if (heroImgs.length && !ticking) {
+  if (!ticking) {
     ticking = true;
     requestAnimationFrame(() => {
       const y = Math.min(window.scrollY, 900);
       heroImgs.forEach(img => { img.style.transform = `translateY(${y * 0.1}px) scale(1.04)`; });
+      const vh = window.innerHeight;
+      seamInners.forEach(el => {
+        const rect = el.parentElement.getBoundingClientRect();
+        const progress = (rect.top - vh / 2) / (vh / 2);
+        const clamped = Math.max(-1, Math.min(1, progress));
+        el.style.transform = `translateY(-50%) translateX(${(clamped * -46).toFixed(1)}px)`;
+      });
       ticking = false;
     });
   }
@@ -176,6 +184,15 @@ if (galleryMarquee) {
 
   if (rotationPool.length) restartRotation();
 }
+
+// Spotlight glow that follows the cursor on team + review cards
+document.querySelectorAll('.team-card, .review-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+});
 
 // Cookie banner
 const cookieBanner = document.querySelector('.cookie-banner');
