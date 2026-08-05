@@ -75,12 +75,14 @@ h1,h2,h3,h4{
 }
 
 .eyebrow{
+  display:inline-block;
   font-family:var(--sans);
   font-size:.72rem;
   letter-spacing:.22em;
   text-transform:uppercase;
   color:var(--cream-dim);
   font-weight:600;
+  margin-bottom:18px;
 }
 .section-paper .eyebrow{color:var(--ink-faint)}
 
@@ -177,8 +179,8 @@ h1,h2,h3,h4{
 .main-nav a.btn-primary::after{display:none}
 
 .nav-icon{
-  position:absolute; left:50%; top:-22px; transform:translate(-50%,6px);
-  width:15px; height:15px; color:var(--accent);
+  position:absolute; left:50%; top:-15px; transform:translate(-50%,4px);
+  width:13px; height:13px; color:var(--accent);
   opacity:0; transition:opacity .35s var(--ease-out), transform .35s var(--ease-out);
   pointer-events:none;
 }
@@ -210,12 +212,6 @@ h1,h2,h3,h4{
   padding:0 clamp(28px,5vw,64px) 70px;
   display:flex; flex-direction:column; gap:26px;
 }
-.hero-kicker{
-  display:flex; align-items:center; gap:14px;
-  font-family:var(--sans); font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim);
-  overflow:hidden; text-shadow:0 1px 8px rgba(0,0,0,.5);
-}
-.hero-kicker::before{content:""; width:34px; height:1px; background:var(--accent); flex-shrink:0}
 .hero h1{
   font-size:clamp(2.8rem, 6.4vw, 6rem);
   color:var(--paper);
@@ -257,7 +253,6 @@ section{position:relative}
 .section-dark{background:var(--bg)}
 .section-soft{background:var(--bg-soft)}
 .section-paper{background:var(--paper); color:var(--ink)}
-.section-paper + .section-paper{border-top:1px solid var(--line-light)}
 .section-paper .about-copy p{color:var(--ink-dim)}
 .section-paper .locations-list li{color:var(--ink-dim); border-color:var(--line-light)}
 .section-paper .locations-list b{color:var(--ink)}
@@ -305,6 +300,39 @@ section{position:relative}
 
 .badge-play{transform-origin:12.5px 12px; animation:badgePlay 2.2s ease-in-out infinite}
 @keyframes badgePlay{0%,100%{transform:scale(1); opacity:.85} 50%{transform:scale(1.16); opacity:1}}
+
+/* ===================== SEAM BADGE (straddles the join between two sections) ===================== */
+.seam{position:relative; height:0; z-index:5}
+.seam-inner{
+  position:absolute; left:0; right:0; top:0;
+  display:flex; justify-content:center;
+  transform:translateY(-50%);
+  padding-inline:var(--gutter);
+}
+.seam-badge{
+  background:var(--ink); color:var(--cream);
+  padding:24px 46px 20px; border-radius:2px;
+  box-shadow:0 28px 54px -18px rgba(0,0,0,.4);
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.seam-badge .section-badge{margin-bottom:0}
+.seam-badge .badge-line{
+  background:linear-gradient(90deg, transparent, rgba(239,231,214,.3) 65%, rgba(239,231,214,.3) 100%);
+}
+.seam-badge .badge-line.is-end{
+  background:linear-gradient(90deg, rgba(239,231,214,.3) 0%, rgba(239,231,214,.3) 35%, transparent 100%);
+}
+.seam-badge .badge-svg{color:var(--cream)}
+.seam-title{
+  font-family:var(--sans); font-size:.76rem; letter-spacing:.22em; text-transform:uppercase; font-weight:700;
+  color:var(--paper); white-space:nowrap;
+}
+.seam.is-icon-only .seam-badge{padding:16px 30px}
+@media (max-width:640px){
+  .seam-badge{padding:18px 26px 16px}
+  .seam-badge .badge-line{max-width:40px}
+  .seam.is-icon-only .seam-badge{padding:13px 20px}
+}
 .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
 
@@ -331,11 +359,11 @@ section{position:relative}
 /* ===================== SERVICES — editorial menu ===================== */
 .menu-layout{display:grid; grid-template-columns:.78fr 1.22fr; gap:clamp(40px,6vw,90px)}
 .menu-intro{display:flex; flex-direction:column; align-self:start; position:sticky; top:112px}
-.menu-intro h2{font-size:clamp(2.1rem,4vw,3rem); margin-top:8px}
+.menu-intro h2{font-size:clamp(2.1rem,4vw,3rem)}
 .menu-intro p{margin-top:18px; color:var(--ink-dim); max-width:36ch}
 .menu-photo-wrap{margin-top:32px}
-.menu-photo{height:min(46vh,420px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
-.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center 15%}
+.menu-photo{height:min(58vh,540px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
+.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center 24%}
 .menu-list{display:flex; flex-direction:column; gap:44px}
 .menu-group h3{
   font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans); font-weight:700;
@@ -378,10 +406,10 @@ section{position:relative}
 .loyalty-note{margin-top:28px; display:flex; gap:16px; align-items:center; font-size:.86rem; color:var(--ink-dim)}
 .loyalty-note .pill{background:var(--red); color:var(--paper); padding:.4em .9em; border-radius:2px; font-weight:700; font-size:.76rem; letter-spacing:.04em; white-space:nowrap}
 
-/* ===================== PORTFOLIO — vertical marquee gallery ===================== */
+/* ===================== PORTFOLIO — featured photo + marquee rails ===================== */
 .gallery-marquee{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
-  height:min(78vh,640px); overflow:hidden; position:relative;
+  display:grid; grid-template-columns:.68fr 1.9fr .68fr; gap:16px;
+  height:min(86vh,760px); overflow:hidden; position:relative;
 }
 .gallery-marquee::before,.gallery-marquee::after{
   content:""; position:absolute; left:0; right:0; height:90px; z-index:2; pointer-events:none;
@@ -391,16 +419,29 @@ section{position:relative}
 .gallery-col{overflow:hidden; border-radius:2px}
 .gallery-track{display:flex; flex-direction:column; gap:16px; width:100%; will-change:transform}
 .gallery-track img{
-  width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:2px;
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border-radius:2px; cursor:pointer;
   filter:grayscale(12%) sepia(6%) contrast(1.07) saturate(1.04);
   box-shadow:0 20px 30px -24px rgba(19,18,16,.35);
+  transition:filter .3s;
 }
+.gallery-track img:hover{filter:grayscale(0%) sepia(0%) contrast(1.02) saturate(1.05)}
 .gallery-col--up .gallery-track{animation:galleryUp 34s linear infinite}
 .gallery-col--down .gallery-track{animation:galleryDown 34s linear infinite}
 .gallery-col--slow .gallery-track{animation-duration:46s}
 @keyframes galleryUp{from{transform:translateY(0)} to{transform:translateY(-50%)}}
 @keyframes galleryDown{from{transform:translateY(-50%)} to{transform:translateY(0)}}
 .gallery-marquee:hover .gallery-track{animation-play-state:paused}
+
+.gallery-feature{
+  position:relative; overflow:hidden; border-radius:2px; align-self:center;
+  aspect-ratio:4/5; box-shadow:0 40px 70px -24px rgba(19,18,16,.4);
+}
+.gallery-feature-img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:grayscale(8%) sepia(4%) contrast(1.05) saturate(1.03);
+  opacity:1; transition:opacity .45s ease;
+}
+.gallery-feature-img.is-fading{opacity:0}
 
 /* ===================== TEAM ===================== */
 .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
@@ -469,12 +510,12 @@ section{position:relative}
 
 /* ===================== CTA / BOOKING ===================== */
 .cta{
-  position:relative; padding-block:clamp(110px,14vw,190px); text-align:center; overflow:hidden;
+  position:relative; padding-block:clamp(64px,7vw,100px); text-align:center; overflow:hidden;
   background:var(--ink); isolation:isolate;
 }
 .cta-media{position:absolute; inset:0; z-index:0}
-.cta-media img{width:100%; height:100%; object-fit:cover; object-position:center 32%; opacity:.68}
-.cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,14,11,.25) 0%, rgba(15,14,11,.35) 45%, rgba(15,14,11,.82) 100%)}
+.cta-media img{width:100%; height:100%; object-fit:cover; object-position:center 42%; opacity:.8}
+.cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,14,11,.3) 0%, rgba(15,14,11,.32) 45%, rgba(15,14,11,.86) 100%)}
 .cta > .wrap{position:relative; z-index:1}
 .cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; margin-inline:auto; text-shadow:0 4px 24px rgba(0,0,0,.6)}
 .cta p{margin-top:20px; color:var(--cream-dim); text-shadow:0 2px 12px rgba(0,0,0,.5)}
@@ -584,7 +625,9 @@ section{position:relative}
   .team-grid{grid-template-columns:1fr; max-width:340px; margin-inline:auto}
   .footer-top{grid-template-columns:1fr}
   .reel{width:58vw}
-  .gallery-marquee{grid-template-columns:repeat(2,1fr); height:min(58vh,460px)}
-  .gallery-col--center{display:none}
+  .gallery-marquee{grid-template-columns:1fr 1fr; height:auto; row-gap:12px}
+  .gallery-marquee::before,.gallery-marquee::after{display:none}
+  .gallery-feature{grid-column:1/3; order:-1; aspect-ratio:16/10}
+  .gallery-col{height:220px}
   .cookie-banner{left:12px; right:12px; bottom:12px; padding:22px}
 }
