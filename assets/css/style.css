@@ -238,7 +238,7 @@ h1,h2,h3,h4{
   position:relative; z-index:2;
   border-top:1px solid var(--line-dark);
   background:rgba(20,19,16,.5);
-  padding-bottom:28px;
+  padding-bottom:36px;
 }
 .hero-strip .wrap{
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -250,7 +250,7 @@ h1,h2,h3,h4{
 
 /* ===================== SECTION shell ===================== */
 section{position:relative}
-.section{padding-block:clamp(58px,6.5vw,88px)}
+.section{padding-block:clamp(84px,11vw,150px)}
 .section-dark{background:var(--bg)}
 .section-soft{background:var(--bg-soft)}
 .section-paper{background:var(--paper); color:var(--ink)}
@@ -307,14 +307,14 @@ section{position:relative}
 .seam-inner{
   position:absolute; left:0; right:0; top:0;
   display:flex; justify-content:center;
-  transform:translateY(-24%);
+  transform:translateY(-37%);
   padding-inline:var(--gutter);
   pointer-events:none;
 }
 .seam-badge{
   background:#000; color:var(--cream);
   border:1px solid rgba(239,231,214,.18);
-  padding:clamp(20px,2.6vw,28px) clamp(40px,6vw,72px);
+  padding:clamp(32px,4.2vw,48px) clamp(56px,8vw,104px);
   border-radius:2px;
   box-shadow:0 24px 60px -24px rgba(0,0,0,.55);
   transition:border-color .45s var(--ease-out);
@@ -322,21 +322,22 @@ section{position:relative}
 }
 .seam-badge:hover{border-color:rgba(239,231,214,.8)}
 #seam-experience .seam-inner{transform:translateY(-14%)}
+#seam-experience .seam-badge{padding:clamp(18px,2.4vw,26px) clamp(40px,6vw,70px)}
+#seam-experience .badge-inner{gap:clamp(10px,1.4vw,16px)}
+#seam-experience .badge-inner .badge-svg{width:34px; height:34px}
+#seam-experience .seam-title{font-size:clamp(1.05rem,1.9vw,1.5rem)}
+#seam-experience .badge-inner .section-badge .badge-line{max-width:120px}
 .badge-inner{
-  display:flex; flex-direction:column; align-items:center; gap:clamp(9px,1.2vw,14px);
-  transform:translateY(var(--parallax, 0px));
+  display:flex; flex-direction:column; align-items:center; gap:clamp(16px,2.2vw,26px);
 }
-.badge-inner .badge-svg{color:var(--cream); width:26px; height:26px; overflow:visible}
-.badge-title-row{display:flex; align-items:center; gap:clamp(10px,1.5vw,16px)}
-.badge-title-row .badge-line{
-  width:clamp(22px,3.2vw,44px); height:1px; flex:none;
-  background:rgba(239,231,214,.35);
-  transition:transform .5s var(--ease-spring);
-}
-.seam-badge:hover .badge-title-row .badge-line:first-child{transform:translateX(-10px)}
-.seam-badge:hover .badge-title-row .badge-line:last-child{transform:translateX(10px)}
+.badge-inner .section-badge{margin-bottom:0; gap:22px}
+.badge-inner .section-badge .badge-line{max-width:230px; height:2px; transition:transform .5s var(--ease-spring)}
+.badge-inner .section-badge .badge-line::after{background:var(--cream); width:7px; height:7px}
+.seam-badge:hover .section-badge .badge-line:first-child{transform:translateX(-16px)}
+.seam-badge:hover .section-badge .badge-line.is-end{transform:translateX(16px)}
+.badge-inner .badge-svg{color:var(--cream); width:64px; height:64px; overflow:visible}
 .seam-title{
-  font-family:var(--sans); font-size:clamp(1.02rem,1.8vw,1.45rem); letter-spacing:.07em; text-transform:uppercase; font-weight:800;
+  font-family:var(--sans); font-size:clamp(1.7rem,3.4vw,2.6rem); letter-spacing:.03em; text-transform:uppercase; font-weight:800;
   color:var(--paper); white-space:nowrap; line-height:1;
 }
 
@@ -349,13 +350,14 @@ section{position:relative}
 @keyframes badgeHeartbeat{0%,100%{transform:scale(1)} 45%{transform:scale(1.12)} 60%{transform:scale(1.04)}}
 .badge-icon-shield{transform:scale(.8); transition:transform .7s var(--ease-spring); transform-origin:center}
 .seam-badge.is-visible .badge-icon-shield{transform:scale(1)}
-.badge-icon-hourglass{transform-origin:center; will-change:transform}
+.badge-icon-hourglass{transform-origin:center}
 
 @media (max-width:640px){
-  .seam-badge{padding:16px 22px}
-  .badge-inner .badge-svg{width:24px; height:24px}
-  .badge-title-row .badge-line{width:18px}
-  .seam-title{font-size:1rem}
+  .seam-badge{padding:22px 26px}
+  .badge-inner .section-badge{gap:12px}
+  .badge-inner .section-badge .badge-line{max-width:40px}
+  .badge-inner .badge-svg{width:30px; height:30px}
+  .seam-title{font-size:1.25rem}
 }
 .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
