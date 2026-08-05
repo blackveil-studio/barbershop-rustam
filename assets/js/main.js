@@ -16,6 +16,33 @@ const onScroll = () => {
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
 
+// Seam badges: hourglass flips as it crosses the viewport, badges drift with a subtle parallax
+const hourglasses = [...document.querySelectorAll('.badge-icon-hourglass')];
+const seamBadges = [...document.querySelectorAll('.seam-badge')];
+let seamTicking = false;
+const updateSeamBadges = () => {
+  const vh = window.innerHeight;
+  hourglasses.forEach(icon => {
+    const r = icon.closest('.seam-badge').getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, 1 - (r.top + r.height / 2) / vh));
+    icon.style.transform = `rotate(${progress * 180}deg)`;
+  });
+  seamBadges.forEach(badge => {
+    const inner = badge.querySelector('.badge-inner');
+    if (!inner) return;
+    const r = badge.getBoundingClientRect();
+    const offset = (r.top + r.height / 2 - vh / 2) * -0.1;
+    inner.style.setProperty('--parallax', `${offset}px`);
+  });
+  seamTicking = false;
+};
+if (hourglasses.length || seamBadges.length) {
+  updateSeamBadges();
+  window.addEventListener('scroll', () => {
+    if (!seamTicking) { seamTicking = true; requestAnimationFrame(updateSeamBadges); }
+  }, { passive: true });
+}
+
 // Hero headline: word-by-word entrance
 const heroH1 = document.querySelector('.hero h1');
 if (heroH1 && !heroH1.dataset.split) {

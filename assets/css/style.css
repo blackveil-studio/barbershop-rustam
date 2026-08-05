@@ -238,6 +238,7 @@ h1,h2,h3,h4{
   position:relative; z-index:2;
   border-top:1px solid var(--line-dark);
   background:rgba(20,19,16,.5);
+  padding-bottom:28px;
 }
 .hero-strip .wrap{
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -249,7 +250,7 @@ h1,h2,h3,h4{
 
 /* ===================== SECTION shell ===================== */
 section{position:relative}
-.section{padding-block:clamp(42px,5vw,72px)}
+.section{padding-block:clamp(58px,6.5vw,88px)}
 .section-dark{background:var(--bg)}
 .section-soft{background:var(--bg-soft)}
 .section-paper{background:var(--paper); color:var(--ink)}
@@ -302,41 +303,59 @@ section{position:relative}
 @keyframes badgePlay{0%,100%{transform:scale(1); opacity:.85} 50%{transform:scale(1.16); opacity:1}}
 
 /* ===================== SEAM BADGE (straddles the join between two sections) ===================== */
-.seam{position:relative; height:0; z-index:5}
+.seam{position:relative; height:0; z-index:25}
 .seam-inner{
   position:absolute; left:0; right:0; top:0;
   display:flex; justify-content:center;
-  transform:translateY(-38%);
+  transform:translateY(-24%);
   padding-inline:var(--gutter);
+  pointer-events:none;
 }
 .seam-badge{
-  background:var(--ink); color:var(--cream);
-  padding:clamp(30px,4vw,46px) clamp(64px,9.5vw,120px) clamp(26px,3.6vw,40px);
+  background:#000; color:var(--cream);
+  border:1px solid rgba(239,231,214,.18);
+  padding:clamp(20px,2.6vw,28px) clamp(40px,6vw,72px);
   border-radius:2px;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.35),
-    0 10px 20px -6px rgba(0,0,0,.35),
-    0 28px 56px -10px rgba(0,0,0,.32),
-    0 60px 100px -16px rgba(0,0,0,.28);
-  display:flex; flex-direction:column; align-items:center; gap:clamp(16px,2vw,26px);
+  box-shadow:0 24px 60px -24px rgba(0,0,0,.55);
+  transition:border-color .45s var(--ease-out);
+  pointer-events:auto;
 }
-.seam-badge .section-badge{margin-bottom:0; gap:22px}
-.seam-badge .badge-line{
-  max-width:170px;
-  background:linear-gradient(90deg, transparent, rgba(239,231,214,.3) 65%, rgba(239,231,214,.3) 100%);
+.seam-badge:hover{border-color:rgba(239,231,214,.8)}
+#seam-experience .seam-inner{transform:translateY(-14%)}
+.badge-inner{
+  display:flex; flex-direction:column; align-items:center; gap:clamp(9px,1.2vw,14px);
+  transform:translateY(var(--parallax, 0px));
 }
-.seam-badge .badge-line.is-end{
-  background:linear-gradient(90deg, rgba(239,231,214,.3) 0%, rgba(239,231,214,.3) 35%, transparent 100%);
+.badge-inner .badge-svg{color:var(--cream); width:26px; height:26px; overflow:visible}
+.badge-title-row{display:flex; align-items:center; gap:clamp(10px,1.5vw,16px)}
+.badge-title-row .badge-line{
+  width:clamp(22px,3.2vw,44px); height:1px; flex:none;
+  background:rgba(239,231,214,.35);
+  transition:transform .5s var(--ease-spring);
 }
-.seam-badge .badge-svg{color:var(--cream); width:40px; height:40px}
-.seam.is-icon-only .seam-badge{padding:clamp(18px,2.4vw,26px) clamp(51px,7.5vw,84px)}
-.seam.is-icon-only .seam-badge .badge-svg{width:36px; height:36px}
+.seam-badge:hover .badge-title-row .badge-line:first-child{transform:translateX(-10px)}
+.seam-badge:hover .badge-title-row .badge-line:last-child{transform:translateX(10px)}
+.seam-title{
+  font-family:var(--sans); font-size:clamp(1.02rem,1.8vw,1.45rem); letter-spacing:.07em; text-transform:uppercase; font-weight:800;
+  color:var(--paper); white-space:nowrap; line-height:1;
+}
+
+/* per-icon character animations */
+.badge-icon-star, .badge-icon-shutter{animation:badgeSpin 8s linear infinite; transform-origin:center}
+@keyframes badgeSpin{to{transform:rotate(360deg)}}
+.badge-icon-scales{animation:badgeSway 3.2s ease-in-out infinite; transform-origin:50% 8%}
+@keyframes badgeSway{0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)}}
+.badge-icon-heart{animation:badgeHeartbeat 2.3s ease-in-out infinite; transform-origin:center}
+@keyframes badgeHeartbeat{0%,100%{transform:scale(1)} 45%{transform:scale(1.12)} 60%{transform:scale(1.04)}}
+.badge-icon-shield{transform:scale(.8); transition:transform .7s var(--ease-spring); transform-origin:center}
+.seam-badge.is-visible .badge-icon-shield{transform:scale(1)}
+.badge-icon-hourglass{transform-origin:center; will-change:transform}
+
 @media (max-width:640px){
-  .seam-badge{padding:24px 30px 20px}
-  .seam-badge .badge-line{max-width:44px}
-  .seam-badge .badge-svg{width:30px; height:30px}
-  .seam.is-icon-only .seam-badge{padding:14px 22px}
-  .seam.is-icon-only .seam-badge .badge-svg{width:22px; height:22px}
+  .seam-badge{padding:16px 22px}
+  .badge-inner .badge-svg{width:24px; height:24px}
+  .badge-title-row .badge-line{width:18px}
+  .seam-title{font-size:1rem}
 }
 .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem)}
 .section-head p{max-width:38ch; color:var(--cream-dim); font-size:.98rem}
@@ -368,8 +387,8 @@ section{position:relative}
 .menu-intro h2{font-size:clamp(2.1rem,4vw,3rem)}
 .menu-intro p{margin-top:18px; color:var(--ink-dim); max-width:36ch}
 .menu-photo-wrap{margin-top:32px}
-.menu-photo{height:min(65vh,600px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
-.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:58% 40%}
+.menu-photo{height:min(60vh,540px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
+.menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center top}
 .menu-list{display:flex; flex-direction:column; gap:44px}
 .menu-group h3{
   font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans); font-weight:700;
