@@ -324,18 +324,17 @@ section{position:relative}
 }
 .badge-inner .section-badge{margin-bottom:0; gap:24px}
 .badge-inner .section-badge .badge-line-wrap{
-  flex:none; width:230px; display:flex; align-items:center; gap:6px;
+  flex:none; width:230px; display:flex; align-items:center; gap:3px;
 }
-.badge-inner .section-badge .badge-line-wrap.is-end{flex-direction:row-reverse}
 .badge-inner .section-badge .badge-line{
   flex:1; min-width:0; max-width:none; height:20px; opacity:.85; background:var(--paper);
-  clip-path:polygon(100% 20%, 70% 25%, 25% 46%, 0% 50%, 25% 54%, 70% 75%, 100% 80%);
+  clip-path:polygon(100% 40%, 60% 22%, 20% 46%, 0% 50%, 20% 54%, 60% 78%, 100% 60%);
 }
 .badge-inner .section-badge .badge-line-wrap.is-end .badge-line{
-  clip-path:polygon(0% 20%, 30% 25%, 75% 46%, 100% 50%, 75% 54%, 30% 75%, 0% 80%);
+  clip-path:polygon(0% 40%, 40% 22%, 80% 46%, 100% 50%, 80% 54%, 40% 78%, 0% 60%);
 }
 .badge-inner .section-badge .badge-diamond{flex:none; background:var(--paper); transform:rotate(45deg)}
-.badge-inner .section-badge .badge-diamond-sm{width:6px; height:6px}
+.badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
 .badge-inner .section-badge .badge-diamond-lg{width:9px; height:9px}
 .badge-arrow-tip{display:none}
 .badge-inner .badge-svg{color:var(--cream); width:64px; height:64px; overflow:visible}
@@ -352,10 +351,10 @@ section{position:relative}
 }
 #seam-experience .badge-inner{gap:clamp(12px,1.8vw,18px)}
 #seam-experience .badge-inner .section-badge{gap:clamp(12px,1.8vw,20px)}
-#seam-experience .badge-inner .section-badge .badge-line-wrap{width:clamp(70px,15vw,185px); gap:8px}
+#seam-experience .badge-inner .section-badge .badge-line-wrap{width:clamp(70px,15vw,185px); gap:3px}
 #seam-experience .badge-inner .section-badge .badge-line{height:13px}
 #seam-experience .badge-inner .section-badge .badge-diamond-lg{width:11px; height:11px}
-#seam-experience .badge-inner .section-badge .badge-diamond-sm{width:5px; height:5px}
+#seam-experience .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
 #seam-experience .badge-inner .badge-svg{width:clamp(32px,4.5vw,48px); height:clamp(32px,4.5vw,48px)}
 #seam-experience .seam-title{font-size:clamp(1.25rem,2.9vw,1.95rem); letter-spacing:.28em; font-weight:400}
 .hero-strip{padding-bottom:clamp(66px,15vw,116px)}
@@ -370,8 +369,12 @@ section{position:relative}
 @keyframes badgeHeartbeat{0%,100%{transform:scale(1)} 45%{transform:scale(1.12)} 60%{transform:scale(1.04)}}
 .badge-icon-shield{transform:scale(.8); transition:transform .7s var(--ease-spring); transform-origin:center}
 .seam-badge.is-visible .badge-icon-shield{transform:scale(1)}
-.badge-icon-hourglass{transform-origin:50% 8%; animation:hourglassSwing 3.2s ease-in-out infinite}
-@keyframes hourglassSwing{0%,100%{transform:rotate(-11deg)} 50%{transform:rotate(11deg)}}
+.badge-icon-hourglass{transform-origin:center; animation:hourglassFlip 6s cubic-bezier(.65,.05,.36,1) infinite}
+@keyframes hourglassFlip{
+  0%, 18%{transform:rotate(0deg)}
+  50%, 68%{transform:rotate(180deg)}
+  100%{transform:rotate(360deg)}
+}
 
 @media (max-width:640px){
   .seam-badge{padding:22px 26px}
