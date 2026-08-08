@@ -351,13 +351,18 @@ section{position:relative}
 /* ---- #seam-experience: wide monumental plate (pilot badge, others still at old size) ---- */
 #seam-experience .seam-inner{transform:translateY(-50%)}
 #seam-experience .seam-badge{
-  padding:clamp(24px,3.4vw,40px) clamp(30px,6.5vw,70px);
+  padding:clamp(22px,3vw,36px) clamp(24px,5vw,52px);
+  max-width:550px;
 }
 #seam-experience .badge-inner{gap:clamp(12px,1.8vw,18px)}
 #seam-experience .badge-inner .section-badge{gap:clamp(12px,1.8vw,20px)}
-#seam-experience .badge-inner .section-badge .badge-line{max-width:clamp(90px,22vw,260px); width:clamp(90px,22vw,260px)}
+#seam-experience .badge-inner .section-badge .badge-line{max-width:clamp(70px,15vw,185px); width:clamp(70px,15vw,185px); height:13px; opacity:.28}
+#seam-experience .badge-inner .section-badge .badge-line::after{width:6px; height:6px; right:1px}
+#seam-experience .badge-inner .section-badge .badge-line::before{width:6px; height:6px; right:9px}
+#seam-experience .badge-inner .section-badge .badge-line.is-end::after{left:1px; right:auto}
+#seam-experience .badge-inner .section-badge .badge-line.is-end::before{left:9px; right:auto}
 #seam-experience .badge-inner .badge-svg{width:clamp(32px,4.5vw,48px); height:clamp(32px,4.5vw,48px)}
-#seam-experience .seam-title{font-size:clamp(1.5rem,3.6vw,2.4rem); letter-spacing:.12em}
+#seam-experience .seam-title{font-size:clamp(1.25rem,2.9vw,1.95rem); letter-spacing:.28em; font-weight:400}
 .hero-strip{padding-bottom:clamp(66px,15vw,116px)}
 #o-nas{padding-top:clamp(80px,18vw,150px)}
 
