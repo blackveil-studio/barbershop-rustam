@@ -16,6 +16,23 @@ const onScroll = () => {
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
 
+// Seam badge icon: rotates 0-180deg as it crosses the viewport while scrolling
+const hourglassIcon = document.querySelector('.badge-icon-hourglass');
+if (hourglassIcon) {
+  let hgTicking = false;
+  const updateHourglass = () => {
+    const r = hourglassIcon.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const progress = Math.min(1, Math.max(0, 1 - (r.top + r.height / 2) / vh));
+    hourglassIcon.style.transform = `rotate(${progress * 180}deg)`;
+    hgTicking = false;
+  };
+  updateHourglass();
+  window.addEventListener('scroll', () => {
+    if (!hgTicking) { hgTicking = true; requestAnimationFrame(updateHourglass); }
+  }, { passive: true });
+}
+
 // Hero headline: word-by-word entrance
 const heroH1 = document.querySelector('.hero h1');
 if (heroH1 && !heroH1.dataset.split) {
