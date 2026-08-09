@@ -328,10 +328,10 @@ section{position:relative}
 }
 .badge-inner .section-badge .badge-line{
   flex:1; min-width:0; max-width:none; height:20px; opacity:.85; background:var(--paper);
-  clip-path:polygon(100% 50%, 92% 28%, 8% 28%, 0% 50%, 8% 72%, 92% 72%);
+  clip-path:polygon(100% 28%, 0% 50%, 100% 72%);
 }
 .badge-inner .section-badge .badge-line-wrap.is-end .badge-line{
-  clip-path:polygon(0% 50%, 8% 28%, 92% 28%, 100% 50%, 92% 72%, 8% 72%);
+  clip-path:polygon(0% 28%, 100% 50%, 0% 72%);
 }
 .badge-inner .section-badge .badge-diamond{flex:none; background:var(--paper); transform:rotate(45deg)}
 .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
