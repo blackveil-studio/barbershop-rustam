@@ -328,10 +328,10 @@ section{position:relative}
 }
 .badge-inner .section-badge .badge-line{
   flex:1; min-width:0; max-width:none; height:20px; opacity:.85; background:var(--paper);
-  clip-path:polygon(100% 40%, 60% 22%, 20% 46%, 0% 50%, 20% 54%, 60% 78%, 100% 60%);
+  clip-path:polygon(100% 44%, 50% 47%, 0% 50%, 50% 53%, 100% 56%);
 }
 .badge-inner .section-badge .badge-line-wrap.is-end .badge-line{
-  clip-path:polygon(0% 40%, 40% 22%, 80% 46%, 100% 50%, 80% 54%, 40% 78%, 0% 60%);
+  clip-path:polygon(0% 44%, 50% 47%, 100% 50%, 50% 53%, 0% 56%);
 }
 .badge-inner .section-badge .badge-diamond{flex:none; background:var(--paper); transform:rotate(45deg)}
 .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
@@ -356,7 +356,7 @@ section{position:relative}
 #seam-experience .badge-inner .section-badge .badge-diamond-lg{width:11px; height:11px}
 #seam-experience .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
 #seam-experience .badge-inner .badge-svg{width:clamp(40px,5.8vw,58px); height:clamp(40px,5.8vw,58px)}
-#seam-experience .seam-title{font-size:clamp(1.25rem,2.9vw,1.95rem); letter-spacing:.28em; font-weight:400}
+#seam-experience .seam-title{font-size:clamp(1.35rem,3.1vw,2.05rem); letter-spacing:.14em; font-weight:700}
 .hero-strip{padding-bottom:clamp(74px,15vw,116px)}
 #o-nas{padding-top:clamp(80px,18vw,150px)}
 
