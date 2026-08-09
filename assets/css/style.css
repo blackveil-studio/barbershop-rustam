@@ -349,15 +349,15 @@ section{position:relative}
   padding:clamp(22px,3vw,36px) clamp(24px,5vw,52px);
   max-width:550px;
 }
-#seam-experience .badge-inner{gap:clamp(12px,1.8vw,18px)}
+#seam-experience .badge-inner{gap:clamp(16px,2.4vw,24px)}
 #seam-experience .badge-inner .section-badge{gap:clamp(12px,1.8vw,20px)}
 #seam-experience .badge-inner .section-badge .badge-line-wrap{width:clamp(70px,15vw,185px); gap:3px}
 #seam-experience .badge-inner .section-badge .badge-line{height:13px}
 #seam-experience .badge-inner .section-badge .badge-diamond-lg{width:11px; height:11px}
 #seam-experience .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
-#seam-experience .badge-inner .badge-svg{width:clamp(32px,4.5vw,48px); height:clamp(32px,4.5vw,48px)}
+#seam-experience .badge-inner .badge-svg{width:clamp(40px,5.8vw,58px); height:clamp(40px,5.8vw,58px)}
 #seam-experience .seam-title{font-size:clamp(1.25rem,2.9vw,1.95rem); letter-spacing:.28em; font-weight:400}
-.hero-strip{padding-bottom:clamp(66px,15vw,116px)}
+.hero-strip{padding-bottom:clamp(74px,15vw,116px)}
 #o-nas{padding-top:clamp(80px,18vw,150px)}
 
 /* per-icon character animations */
