@@ -18,6 +18,7 @@
 
   --serif:"Newsreader", "Iowan Old Style", Georgia, serif;
   --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --display:"Cinzel", "Newsreader", Georgia, serif;
 
   --container:1240px;
   --gutter:clamp(20px, 5vw, 64px);
@@ -339,7 +340,7 @@ section{position:relative}
 .badge-arrow-tip{display:none}
 .badge-inner .badge-svg{color:var(--cream); width:64px; height:64px; overflow:visible}
 .seam-title{
-  font-family:var(--sans); font-size:clamp(1.7rem,3.4vw,2.6rem); letter-spacing:.03em; text-transform:uppercase; font-weight:800;
+  font-family:var(--display); font-size:clamp(1.7rem,3.4vw,2.6rem); letter-spacing:.03em; text-transform:uppercase; font-weight:700;
   color:var(--paper); white-space:nowrap; line-height:1;
 }
 
