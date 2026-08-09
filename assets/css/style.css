@@ -307,28 +307,29 @@ section{position:relative}
 .seam-inner{
   position:absolute; left:0; right:0; top:0;
   display:flex; justify-content:center;
-  transform:translateY(-37%);
+  transform:translateY(-50%);
   padding-inline:var(--gutter);
   pointer-events:none;
 }
 .seam-badge{
   background:#000; color:var(--cream);
   border:1px solid rgba(239,231,214,.12);
-  padding:clamp(32px,4.2vw,48px) clamp(56px,8vw,104px);
+  padding:clamp(22px,3vw,36px) clamp(24px,5vw,52px);
+  max-width:550px;
   border-radius:0;
   box-shadow:0 20px 50px rgba(0,0,0,.5);
   transition:border-color .45s var(--ease-out);
   pointer-events:auto;
 }
 .badge-inner{
-  display:flex; flex-direction:column; align-items:center; gap:clamp(16px,2.2vw,26px);
+  display:flex; flex-direction:column; align-items:center; gap:clamp(16px,2.4vw,24px);
 }
-.badge-inner .section-badge{margin-bottom:0; gap:24px}
+.badge-inner .section-badge{margin-bottom:0; gap:clamp(12px,1.8vw,20px)}
 .badge-inner .section-badge .badge-line-wrap{
-  flex:none; width:230px; display:flex; align-items:center; gap:3px;
+  flex:none; width:clamp(70px,15vw,185px); display:flex; align-items:center; gap:3px;
 }
 .badge-inner .section-badge .badge-line{
-  flex:1; min-width:0; max-width:none; height:20px; opacity:.85; background:var(--paper);
+  flex:1; min-width:0; max-width:none; height:13px; opacity:.85; background:var(--paper);
   clip-path:polygon(100% 28%, 0% 50%, 100% 72%, 95% 50%);
 }
 .badge-inner .section-badge .badge-line-wrap.is-end .badge-line{
@@ -336,45 +337,55 @@ section{position:relative}
 }
 .badge-inner .section-badge .badge-diamond{flex:none; background:var(--paper); transform:rotate(45deg)}
 .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
-.badge-inner .section-badge .badge-diamond-lg{width:9px; height:9px}
+.badge-inner .section-badge .badge-diamond-lg{width:11px; height:11px}
 .badge-arrow-tip{display:none}
-.badge-inner .badge-svg{color:var(--cream); width:64px; height:64px; overflow:visible}
+.badge-inner .badge-svg{color:var(--cream); width:clamp(40px,5.8vw,58px); height:clamp(40px,5.8vw,58px); overflow:visible}
 .seam-title{
-  font-family:var(--display); font-size:clamp(1.7rem,3.4vw,2.6rem); letter-spacing:.03em; text-transform:uppercase; font-weight:700;
+  font-family:var(--display); font-size:clamp(1.35rem,3.1vw,2.05rem); letter-spacing:.14em; text-transform:uppercase; font-weight:700;
   color:var(--paper); white-space:nowrap; line-height:1;
 }
 
-/* ---- #seam-experience: wide monumental plate (pilot badge, others still at old size) ---- */
-#seam-experience .seam-inner{transform:translateY(-50%)}
-#seam-experience .seam-badge{
-  padding:clamp(22px,3vw,36px) clamp(24px,5vw,52px);
-  max-width:550px;
-}
-#seam-experience .badge-inner{gap:clamp(16px,2.4vw,24px)}
-#seam-experience .badge-inner .section-badge{gap:clamp(12px,1.8vw,20px)}
-#seam-experience .badge-inner .section-badge .badge-line-wrap{width:clamp(70px,15vw,185px); gap:3px}
-#seam-experience .badge-inner .section-badge .badge-line{height:13px}
-#seam-experience .badge-inner .section-badge .badge-diamond-lg{width:11px; height:11px}
-#seam-experience .badge-inner .section-badge .badge-diamond-sm{width:7px; height:7px}
-#seam-experience .badge-inner .badge-svg{width:clamp(40px,5.8vw,58px); height:clamp(40px,5.8vw,58px)}
-#seam-experience .seam-title{font-size:clamp(1.35rem,3.1vw,2.05rem); letter-spacing:.14em; font-weight:700}
 .hero-strip{padding-bottom:clamp(74px,15vw,116px)}
 #o-nas{padding-top:clamp(80px,18vw,150px)}
 
 /* per-icon character animations */
-.badge-icon-star, .badge-icon-shutter{animation:badgeSpin 8s linear infinite; transform-origin:center}
-@keyframes badgeSpin{to{transform:rotate(360deg)}}
-.badge-icon-scales{animation:badgeSway 3.2s ease-in-out infinite; transform-origin:50% 8%}
-@keyframes badgeSway{0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)}}
 .badge-icon-heart{animation:badgeHeartbeat 2.3s ease-in-out infinite; transform-origin:center}
 @keyframes badgeHeartbeat{0%,100%{transform:scale(1)} 45%{transform:scale(1.12)} 60%{transform:scale(1.04)}}
-.badge-icon-shield{transform:scale(.8); transition:transform .7s var(--ease-spring); transform-origin:center}
-.seam-badge.is-visible .badge-icon-shield{transform:scale(1)}
 .badge-icon-hourglass{transform-origin:center; animation:hourglassFlip 6s cubic-bezier(.65,.05,.36,1) infinite}
 @keyframes hourglassFlip{
   0%, 18%{transform:rotate(0deg)}
   50%, 68%{transform:rotate(180deg)}
   100%{transform:rotate(360deg)}
+}
+
+/* razor: blade folds open/closed around its pivot */
+.badge-icon-razor{overflow:visible}
+.razor-blade{transform-origin:9.4px 15.3px; animation:razorFold 4.5s ease-in-out infinite}
+@keyframes razorFold{
+  0%, 10%{transform:rotate(186deg)}
+  45%, 55%{transform:rotate(0deg)}
+  90%, 100%{transform:rotate(186deg)}
+}
+
+/* mirror: mustache bobs gently, as if smiling */
+.mirror-mustache{transform-origin:12px 13px; animation:mustacheBounce 2.6s ease-in-out infinite}
+@keyframes mustacheBounce{0%,100%{transform:translateY(0)} 50%{transform:translateY(-1.1px)}}
+
+/* price tag: gentle hanging sway */
+.badge-icon-tag{animation:badgeTagSwing 3.4s ease-in-out infinite; transform-origin:15.5px 7.5px}
+@keyframes badgeTagSwing{0%,100%{transform:rotate(-7deg)} 50%{transform:rotate(7deg)}}
+
+/* clippers: periodic buzz burst, then rest */
+.badge-icon-clippers{animation:clipperCycle 3.4s ease-in-out infinite}
+@keyframes clipperCycle{
+  0%, 58%{transform:translate(0,0) rotate(0deg)}
+  60%{transform:translate(.5px,-.4px) rotate(-1.2deg)}
+  62%{transform:translate(-.4px,.4px) rotate(1.1deg)}
+  64%{transform:translate(.4px,-.3px) rotate(-1deg)}
+  66%{transform:translate(-.3px,.3px) rotate(1deg)}
+  68%{transform:translate(.3px,-.2px) rotate(-.8deg)}
+  70%{transform:translate(-.2px,.2px) rotate(.6deg)}
+  72%, 100%{transform:translate(0,0) rotate(0deg)}
 }
 
 @media (max-width:640px){
@@ -587,34 +598,38 @@ section{position:relative}
 
 /* ===================== CTA / BOOKING ===================== */
 .cta{
-  position:relative; padding-block:clamp(64px,7vw,100px); text-align:left; overflow:hidden;
+  position:relative; min-height:min(72vh,620px); overflow:hidden;
   background:var(--ink); isolation:isolate;
+  display:flex; align-items:flex-end; justify-content:center;
+  padding-block:clamp(32px,5vw,48px);
+  text-align:center;
 }
 .cta-media{position:absolute; inset:0; z-index:0}
 .cta-media img{
-  width:100%; height:100%; object-fit:cover; object-position:center 8%; opacity:.94;
-  filter:brightness(1.4) contrast(1.04) saturate(1.08);
+  width:100%; height:100%; object-fit:cover; object-position:32% 28%; opacity:1;
+  filter:contrast(1.03) saturate(1.05);
 }
-.cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,14,11,.06) 0%, rgba(15,14,11,.1) 42%, rgba(15,14,11,.68) 100%)}
-.cta > .wrap{position:relative; z-index:1}
-.cta h2{font-size:clamp(2.4rem,6vw,5rem); color:var(--paper); max-width:18ch; text-shadow:0 4px 24px rgba(0,0,0,.6)}
-.cta p{margin-top:20px; color:var(--cream-dim); text-shadow:0 2px 12px rgba(0,0,0,.5)}
-.cta .btn{margin-top:38px; padding:1.3em 2.6em; font-size:.92rem}
+.cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,9,7,.05) 0%, rgba(10,9,7,.12) 46%, rgba(8,7,5,.82) 100%)}
+.cta > .wrap{position:relative; z-index:1; display:flex; flex-direction:column; align-items:center}
+.cta .eyebrow{color:var(--cream-dim)}
+.cta h2{font-size:clamp(1.7rem,3.6vw,2.9rem); color:var(--paper); max-width:20ch; text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.cta p{margin-top:14px; color:var(--cream-dim); text-shadow:0 2px 12px rgba(0,0,0,.5); font-size:.92rem}
+.cta .btn{margin-top:26px; padding:1.1em 2.3em; font-size:.85rem}
 
 /* ===================== FOOTER ===================== */
 .site-footer{background:var(--paper); color:var(--ink); padding-block:70px 30px; border-top:1px solid var(--line-light)}
 .footer-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px}
-.footer-top h4{font-family:var(--sans); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px}
-.footer-top a, .footer-top li{color:var(--ink-dim); font-size:.9rem; line-height:2}
+.footer-top h4{font-family:var(--sans); font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); font-weight:700; margin-bottom:18px}
+.footer-top a, .footer-top li{color:rgba(19,18,16,.82); font-size:.9rem; line-height:2}
 .footer-top a:hover{color:var(--ink)}
-.footer-brand p{color:var(--ink-dim); font-size:.88rem; max-width:32ch; margin-top:14px}
+.footer-brand p{color:rgba(19,18,16,.82); font-size:.88rem; max-width:32ch; margin-top:14px}
 .social-row{display:flex; gap:14px; margin-top:20px}
 .social-row a{width:38px; height:38px; border:1px solid var(--line-light); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:.3s}
 .social-row a:hover{border-color:var(--ink); background:rgba(19,18,16,.05)}
 .footer-bottom{
   margin-top:60px; padding-top:26px; border-top:1px solid var(--line-light);
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
-  font-size:.78rem; color:var(--ink-faint);
+  font-size:.78rem; color:rgba(19,18,16,.7);
 }
 .footer-bottom a:hover{color:var(--ink)}
 
