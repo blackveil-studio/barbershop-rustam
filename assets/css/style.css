@@ -360,7 +360,7 @@ section{position:relative}
 
 /* razor: slender curved handle stays fixed, long blade folds open/closed around its pivot */
 .badge-icon-razor{overflow:visible}
-.razor-blade{transform-box:fill-box; transform-origin:50px 42px; animation:razorFold 4.6s cubic-bezier(.25,1,.5,1) infinite}
+.razor-blade{transform-origin:50px 42px; animation:razorFold 4.6s cubic-bezier(.25,1,.5,1) infinite}
 @keyframes razorFold{
   0%, 15%{transform:rotate(-140deg)}
   50%, 65%{transform:rotate(0deg)}
