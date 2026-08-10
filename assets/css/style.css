@@ -18,7 +18,7 @@
 
   --serif:"Newsreader", "Iowan Old Style", Georgia, serif;
   --sans:"Archivo", "Helvetica Neue", Arial, sans-serif;
-  --display:"Cinzel", "Newsreader", Georgia, serif;
+  --display:"Playfair Display", "Newsreader", Georgia, serif;
 
   --container:1240px;
   --gutter:clamp(20px, 5vw, 64px);
@@ -327,9 +327,12 @@ section{position:relative}
 .badge-inner .section-badge{margin-bottom:0; gap:clamp(12px,1.8vw,20px)}
 .badge-inner .section-badge .badge-line-wrap{
   flex:none; width:clamp(70px,15vw,185px); display:flex; align-items:center; gap:3px;
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1);
 }
+.seam-badge:hover .badge-inner .section-badge .badge-line-wrap:not(.is-end){transform:translateX(-15px)}
+.seam-badge:hover .badge-inner .section-badge .badge-line-wrap.is-end{transform:translateX(15px)}
 .badge-inner .section-badge .badge-line{
-  flex:1; min-width:0; max-width:none; height:13px; opacity:.85; background:var(--paper);
+  flex:1; min-width:0; max-width:none; height:2px; opacity:.25; background:var(--paper);
   clip-path:polygon(100% 28%, 0% 50%, 100% 72%, 95% 50%);
 }
 .badge-inner .section-badge .badge-line-wrap.is-end .badge-line{
@@ -341,7 +344,7 @@ section{position:relative}
 .badge-arrow-tip{display:none}
 .badge-inner .badge-svg{color:var(--cream); width:clamp(40px,5.8vw,58px); height:clamp(40px,5.8vw,58px); overflow:visible}
 .seam-title{
-  font-family:var(--display); font-size:clamp(1.35rem,3.1vw,2.05rem); letter-spacing:.14em; text-transform:uppercase; font-weight:700;
+  font-family:var(--display); font-size:clamp(1.08rem,2.48vw,1.64rem); letter-spacing:.3em; text-transform:uppercase; font-weight:400;
   color:var(--paper); white-space:nowrap; line-height:1;
 }
 
@@ -358,14 +361,18 @@ section{position:relative}
   100%{transform:rotate(360deg)}
 }
 
-/* razor: blade pivots at the hinge (50,25) — closed merges into the handle, open spreads into a peak */
+/* razor: blade pivots at the hinge (50,20) — closed lies flush over the handle, opens on hover */
 .badge-icon-razor{overflow:visible}
 .badge-inner .badge-svg.badge-icon-razor{width:clamp(80px,11.6vw,116px); height:clamp(80px,11.6vw,116px)}
-.razor-blade{transform-origin:50px 25px; animation:razorFold 4.6s cubic-bezier(.25,1,.5,1) infinite}
-@keyframes razorFold{
-  0%, 15%{transform:rotate(0deg)}
-  50%, 65%{transform:rotate(-35deg)}
-  100%{transform:rotate(0deg)}
+.razor-blade{
+  transform-box:fill-box;
+  transform-origin:50px 20px;
+  transform:rotate(0deg);
+  transition:transform .6s cubic-bezier(.25,1,.5,1);
+}
+.seam-badge:hover .razor-blade,
+.is-open .razor-blade{
+  transform:rotate(-35deg);
 }
 
 /* mirror: mustache crossfades between a resting pose and a curled smile, like a changing expression */
