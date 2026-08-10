@@ -313,7 +313,7 @@ section{position:relative}
 }
 .seam-badge{
   background:#000; color:var(--cream);
-  border:1px solid rgba(239,231,214,.12);
+  border:1px solid rgba(239,231,214,.15);
   padding:clamp(22px,3vw,36px) clamp(24px,5vw,52px);
   max-width:550px;
   border-radius:0;
@@ -358,21 +358,14 @@ section{position:relative}
   100%{transform:rotate(360deg)}
 }
 
-/* razor: handle and blade both move — handle sways gently while the blade swings the full open/close arc */
+/* razor: blade pivots at the hinge (50,25) — closed merges into the handle, open spreads into a peak */
 .badge-icon-razor{overflow:visible}
 .badge-inner .badge-svg.badge-icon-razor{width:clamp(80px,11.6vw,116px); height:clamp(80px,11.6vw,116px)}
-.razor-flip{transform-origin:50px 50px; transform:scaleY(-1)}
-.razor-handle{transform-origin:50px 42px; animation:razorHandleSway 4.6s cubic-bezier(.25,1,.5,1) infinite}
-.razor-blade{transform-origin:50px 42px; animation:razorFold 4.6s cubic-bezier(.25,1,.5,1) infinite}
-@keyframes razorHandleSway{
-  0%, 15%{transform:rotate(6deg)}
-  50%, 65%{transform:rotate(-4deg)}
-  100%{transform:rotate(6deg)}
-}
+.razor-blade{transform-origin:50px 25px; animation:razorFold 4.6s cubic-bezier(.25,1,.5,1) infinite}
 @keyframes razorFold{
-  0%, 15%{transform:rotate(-140deg)}
-  50%, 65%{transform:rotate(0deg)}
-  100%{transform:rotate(-140deg)}
+  0%, 15%{transform:rotate(0deg)}
+  50%, 65%{transform:rotate(-35deg)}
+  100%{transform:rotate(0deg)}
 }
 
 /* mirror: mustache crossfades between a resting pose and a curled smile, like a changing expression */
