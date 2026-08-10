@@ -358,12 +358,14 @@ section{position:relative}
   100%{transform:rotate(360deg)}
 }
 
-/* razor: bold handle + a blade that crossfades between a folded silhouette and a fully extended one */
+/* razor: forked handle stays fixed, petal blade fans open/closed around its pivot */
 .badge-icon-razor{overflow:visible}
-.blade-closed{animation:razorClosedFade 4.6s ease-in-out infinite}
-.blade-open{opacity:0; animation:razorOpenFade 4.6s ease-in-out infinite}
-@keyframes razorClosedFade{0%,15%{opacity:1} 40%,70%{opacity:0} 95%,100%{opacity:1}}
-@keyframes razorOpenFade{0%,15%{opacity:0} 40%,70%{opacity:1} 95%,100%{opacity:0}}
+.razor-blade{transform-origin:12px 14.1px; animation:razorFold 4.6s ease-in-out infinite}
+@keyframes razorFold{
+  0%, 15%{transform:rotate(0deg)}
+  50%, 65%{transform:rotate(-24deg)}
+  100%{transform:rotate(0deg)}
+}
 
 /* mirror: mustache crossfades between a resting pose and a curled smile, like a changing expression */
 .mustache-rest{animation:mustacheRestFade 3.2s ease-in-out infinite}
