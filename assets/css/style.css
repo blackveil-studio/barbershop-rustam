@@ -358,34 +358,35 @@ section{position:relative}
   100%{transform:rotate(360deg)}
 }
 
-/* razor: blade folds open/closed around its pivot */
+/* razor: solid blade folds open/closed around its pivot */
 .badge-icon-razor{overflow:visible}
-.razor-blade{transform-origin:9.4px 15.3px; animation:razorFold 4.5s ease-in-out infinite}
+.razor-blade{transform-origin:9.4px 15.3px; animation:razorFold 4.6s ease-in-out infinite}
 @keyframes razorFold{
-  0%, 10%{transform:rotate(186deg)}
+  0%, 10%{transform:rotate(184deg)}
   45%, 55%{transform:rotate(0deg)}
-  90%, 100%{transform:rotate(186deg)}
+  90%, 100%{transform:rotate(184deg)}
 }
 
-/* mirror: mustache bobs gently, as if smiling */
-.mirror-mustache{transform-origin:12px 13px; animation:mustacheBounce 2.6s ease-in-out infinite}
-@keyframes mustacheBounce{0%,100%{transform:translateY(0)} 50%{transform:translateY(-1.1px)}}
+/* mirror: mustache crossfades between a resting pose and a curled smile, like a changing expression */
+.mustache-rest{animation:mustacheRestFade 3.2s ease-in-out infinite}
+.mustache-smile{animation:mustacheSmileFade 3.2s ease-in-out infinite}
+@keyframes mustacheRestFade{0%,40%{opacity:1} 55%,85%{opacity:0} 100%{opacity:1}}
+@keyframes mustacheSmileFade{0%,40%{opacity:0} 55%,85%{opacity:1} 100%{opacity:0}}
 
-/* price tag: gentle hanging sway */
-.badge-icon-tag{animation:badgeTagSwing 3.4s ease-in-out infinite; transform-origin:15.5px 7.5px}
+/* price tag: front tag hangs and sways off a static back tag, for a stacked/voluminous feel */
+.tag-front{animation:badgeTagSwing 3.4s ease-in-out infinite; transform-origin:15.5px 7.5px}
 @keyframes badgeTagSwing{0%,100%{transform:rotate(-7deg)} 50%{transform:rotate(7deg)}}
 
-/* clippers: periodic buzz burst, then rest */
-.badge-icon-clippers{animation:clipperCycle 3.4s ease-in-out infinite}
+/* clippers: periodic buzz burst, then rest — same unhurried pacing as the other icons */
+.badge-icon-clippers{transform-origin:center; animation:clipperCycle 2.8s ease-in-out infinite}
 @keyframes clipperCycle{
-  0%, 58%{transform:translate(0,0) rotate(0deg)}
-  60%{transform:translate(.5px,-.4px) rotate(-1.2deg)}
-  62%{transform:translate(-.4px,.4px) rotate(1.1deg)}
-  64%{transform:translate(.4px,-.3px) rotate(-1deg)}
-  66%{transform:translate(-.3px,.3px) rotate(1deg)}
-  68%{transform:translate(.3px,-.2px) rotate(-.8deg)}
-  70%{transform:translate(-.2px,.2px) rotate(.6deg)}
-  72%, 100%{transform:translate(0,0) rotate(0deg)}
+  0%, 55%{transform:translate(0,0) rotate(0deg)}
+  60%{transform:translate(.8px,-.6px) rotate(-2deg)}
+  65%{transform:translate(-.7px,.5px) rotate(2deg)}
+  70%{transform:translate(.6px,-.5px) rotate(-1.6deg)}
+  75%{transform:translate(-.5px,.4px) rotate(1.4deg)}
+  80%{transform:translate(.4px,-.3px) rotate(-1deg)}
+  85%, 100%{transform:translate(0,0) rotate(0deg)}
 }
 
 @media (max-width:640px){
@@ -428,7 +429,9 @@ section{position:relative}
 .menu-photo{height:min(60vh,540px); overflow:hidden; box-shadow:0 30px 50px -30px rgba(19,18,16,.35)}
 .menu-photo img{width:100%; height:100%; object-fit:cover; object-position:center top}
 .menu-list{display:flex; flex-direction:column; gap:44px}
+.menu-group{display:grid; grid-template-columns:1fr 1fr; column-gap:32px}
 .menu-group h3{
+  grid-column:1/-1;
   font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-family:var(--sans); font-weight:700;
   color:var(--accent-dim); padding-bottom:14px; border-bottom:1px solid var(--line-light); margin-bottom:6px;
 }
@@ -606,7 +609,7 @@ section{position:relative}
 }
 .cta-media{position:absolute; inset:0; z-index:0}
 .cta-media img{
-  width:100%; height:100%; object-fit:cover; object-position:50% 36%; opacity:1;
+  width:100%; height:100%; object-fit:cover; object-position:50% 28%; opacity:1;
   filter:contrast(1.03) saturate(1.05);
 }
 .cta-media::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,9,7,.05) 0%, rgba(10,9,7,.12) 46%, rgba(8,7,5,.82) 100%)}
@@ -718,6 +721,7 @@ section{position:relative}
 }
 @media (max-width:640px){
   .team-grid{grid-template-columns:1fr; max-width:340px; margin-inline:auto}
+  .menu-group{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
   .reel{width:58vw}
   .gallery-marquee{grid-template-columns:1fr 1fr; height:auto; row-gap:12px}

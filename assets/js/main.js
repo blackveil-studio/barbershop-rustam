@@ -163,7 +163,7 @@ if (galleryMarquee) {
     rotateTimer = setInterval(() => {
       rotationIndex = (rotationIndex + 1) % rotationPool.length;
       showFeature(rotationPool[rotationIndex].src, rotationPool[rotationIndex].alt);
-    }, 5000);
+    }, 3300);
   }
   function stopRotation() {
     if (rotateTimer) clearInterval(rotateTimer);
