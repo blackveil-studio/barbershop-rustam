@@ -206,8 +206,8 @@ h1,h2,h3,h4{
 .hero-media::after{
   content:""; position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(12,11,9,.34) 0%, rgba(12,11,9,.08) 22%, rgba(12,11,9,.18) 46%, rgba(12,11,9,.6) 78%, rgba(12,11,9,.76) 100%),
-    linear-gradient(90deg, rgba(12,11,9,.4) 0%, rgba(12,11,9,.1) 42%, transparent 68%);
+    linear-gradient(180deg, rgba(12,11,9,.3) 0%, rgba(12,11,9,.06) 22%, rgba(12,11,9,.14) 46%, rgba(12,11,9,.48) 78%, rgba(12,11,9,.62) 100%),
+    linear-gradient(90deg, rgba(12,11,9,.22) 0%, rgba(12,11,9,.05) 40%, transparent 65%);
 }
 .hero-copy{
   position:relative; z-index:2; width:100%;
