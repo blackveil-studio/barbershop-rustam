@@ -21,7 +21,7 @@
   --display:"Playfair Display", "Newsreader", Georgia, serif;
 
   --container:1240px;
-  --header-container:1380px;
+  --header-container:1290px;
   --gutter:clamp(20px, 5vw, 64px);
 
   --ease:cubic-bezier(.16,.8,.28,1);
@@ -707,16 +707,17 @@ section{position:relative}
 .person-gallery .note{margin-top:18px; font-size:.8rem; color:var(--cream-faint)}
 
 /* ===================== RESPONSIVE ===================== */
-@media (max-width:1450px) and (min-width:1081px){
-  /* Between the mobile nav breakpoint and the header's own 1380px cap,
-     the inline nav (7 links + lang switch + CTA) doesn't fit next to
-     the brand with any margin — it was only safe before the header was
-     contained at all because it had the full viewport to spread out in.
-     Tighten spacing/type here instead of widening the header back out,
-     so it still reads as contained, not full-bleed. */
+@media (max-width:1230px) and (min-width:1081px){
+  /* Below ~1230px the header-inner is still viewport-bound (hasn't hit
+     its own 1290px cap yet), and the unsqueezed nav doesn't fit next to
+     the brand with any margin at that narrower width. Above ~1230px the
+     unsqueezed nav already fits fine on its own, so this band ends well
+     before the 1290px cap instead of squeezing all the way up to it —
+     squeezing past the point where it's needed just pushed the leftover
+     slack into one big gap again. */
   .main-nav{gap:clamp(8px,1vw,16px)}
-  .main-nav a{font-size:.82rem}
-  .main-nav a.btn-primary{padding:.9em 1.5em}
+  .main-nav a{font-size:.8rem}
+  .main-nav a.btn-primary{padding:.9em 1.4em}
 }
 @media (max-width:1080px){
   /* .hero-scroll is bottom:34px, absolutely positioned — on desktop the
