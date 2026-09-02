@@ -143,12 +143,17 @@ h1,h2,h3,h4{
 .site-header{
   position:fixed; inset:0 0 auto 0; z-index:80;
   padding-block:18px;
-  transition:background-color .4s, padding .4s, border-color .4s;
+  /* Both states now use a plain background-color (no background-image)
+     so this actually crossfades — mixing a gradient background-image in
+     one state with a solid background-color in the other can't
+     transition at all, the image just vanishes the instant the class
+     flips while only the color fades in, reading as a flicker/pop. */
+  transition:background-color .4s, backdrop-filter .4s, padding .4s, border-color .4s;
   border-bottom:1px solid transparent;
-  background:linear-gradient(180deg, rgba(15,14,11,.82) 0%, rgba(15,14,11,.68) 70%, rgba(15,14,11,.5) 100%);
+  background-color:rgba(15,14,11,.72);
 }
 .site-header.is-scrolled{
-  background:rgba(20,19,16,.92);
+  background-color:rgba(20,19,16,.92);
   backdrop-filter:blur(10px);
   padding-block:14px;
   border-color:var(--line-dark);
@@ -233,6 +238,7 @@ h1,h2,h3,h4{
 }
 .hero h1{
   font-size:clamp(2.6rem, 4.8vw, 4.5rem);
+  line-height:1.22;
   color:var(--paper);
   max-width:16ch;
   text-shadow:0 2px 3px rgba(0,0,0,.85), 0 4px 28px rgba(0,0,0,.6), 0 1px 4px rgba(0,0,0,.6);
