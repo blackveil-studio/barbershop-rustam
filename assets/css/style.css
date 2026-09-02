@@ -202,7 +202,7 @@ h1,h2,h3,h4{
 
 /* ===================== HERO ===================== */
 .hero{
-  position:relative; min-height:100svh; display:flex; align-items:center;
+  position:relative; min-height:100svh; display:flex; align-items:flex-end;
   overflow:hidden;
   background:var(--ink);
 }
@@ -228,8 +228,8 @@ h1,h2,h3,h4{
 .hero-copy{
   position:relative; z-index:2; width:100%;
   max-width:var(--container); margin-inline:auto;
-  padding:0 var(--gutter);
-  display:flex; flex-direction:column; gap:26px;
+  padding:0 var(--gutter) 70px;
+  display:flex; flex-direction:column; gap:34px;
 }
 .hero h1{
   font-size:clamp(2.6rem, 4.8vw, 4.5rem);
@@ -725,12 +725,6 @@ section{position:relative}
      the two buttons wrap onto two lines, so the taller button stack
      runs right into the scroll cue and the two visually collide. */
   .hero-scroll{display:none}
-  /* Centering the copy block works on the wide, short desktop hero, but
-     on a tall portrait frame it leaves a large empty gap below the
-     buttons instead of using the space — anchor to the bottom here
-     like before. */
-  .hero{align-items:flex-end}
-  .hero-copy{padding:0 var(--gutter) 70px}
   /* The desktop pool is an ellipse tuned for a wide, short box — on a
      tall portrait hero the same percentages don't land over the text.
      Swap it for a straightforward bottom-heavy wash instead. */
