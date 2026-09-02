@@ -1,6 +1,7 @@
 // Header scroll state + hero parallax
 const header = document.querySelector('.site-header');
 const heroImgs = document.querySelectorAll('.hero-media img');
+const hasHero = !!document.querySelector('.hero');
 let ticking = false;
 const onScroll = () => {
   header.classList.toggle('is-scrolled', window.scrollY > 40);
@@ -13,8 +14,15 @@ const onScroll = () => {
     });
   }
 };
-onScroll();
-window.addEventListener('scroll', onScroll, { passive: true });
+if (hasHero) {
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+} else {
+  // No dark hero photo under the header on this page - the transparent
+  // gradient variant has nothing to sit on and reads as a rendering bug
+  // against a light background. Keep the solid header always.
+  header.classList.add('is-scrolled');
+}
 
 // Hero headline: word-by-word entrance
 const heroH1 = document.querySelector('.hero h1');
