@@ -21,6 +21,7 @@
   --display:"Playfair Display", "Newsreader", Georgia, serif;
 
   --container:1240px;
+  --header-container:1380px;
   --gutter:clamp(20px, 5vw, 64px);
 
   --ease:cubic-bezier(.16,.8,.28,1);
@@ -153,7 +154,7 @@ h1,h2,h3,h4{
   border-color:var(--line-dark);
 }
 .header-inner{
-  max-width:var(--container); margin-inline:auto; padding-inline:var(--gutter);
+  max-width:var(--header-container); margin-inline:auto; padding-inline:var(--gutter);
   display:flex; align-items:center; justify-content:space-between;
 }
 .brand{
@@ -167,7 +168,7 @@ h1,h2,h3,h4{
 .brand span{font-family:var(--sans); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-dim)}
 .site-header .brand span{display:none}
 
-.main-nav{display:flex; align-items:center; gap:clamp(12px,1.4vw,20px)}
+.main-nav{display:flex; align-items:center; gap:clamp(14px,1.6vw,26px)}
 .main-nav a{
   font-size:.86rem; letter-spacing:.01em; font-weight:500;
   color:var(--cream-dim); white-space:nowrap;
@@ -194,8 +195,8 @@ h1,h2,h3,h4{
 
 .nav-toggle{display:none}
 
-.lang-switch{display:flex; align-items:center; gap:6px; font-size:.72rem; letter-spacing:.06em}
-.lang-switch a{color:var(--cream-faint); padding:2px 3px; font-weight:600}
+.lang-switch{display:flex; align-items:center; gap:9px; font-size:.72rem; letter-spacing:.06em}
+.lang-switch a{color:var(--cream-faint); padding:2px 4px; font-weight:600}
 .lang-switch a.is-active{color:var(--cream)}
 .lang-switch a:hover{color:var(--paper)}
 
@@ -706,15 +707,15 @@ section{position:relative}
 .person-gallery .note{margin-top:18px; font-size:.8rem; color:var(--cream-faint)}
 
 /* ===================== RESPONSIVE ===================== */
-@media (max-width:1300px) and (min-width:1081px){
-  /* Between the mobile nav breakpoint and the site's 1240px content
-     container, the inline nav (7 links + lang switch + CTA) is too wide
-     for the now-contained header to fit with any margin — it was only
-     safe before because the header ignored the container and just used
-     the full viewport. Tighten spacing/type here instead of widening
-     the header back out, so it still lines up with the rest of the page. */
-  .main-nav{gap:clamp(8px,1vw,14px)}
-  .main-nav a{font-size:.8rem}
+@media (max-width:1450px) and (min-width:1081px){
+  /* Between the mobile nav breakpoint and the header's own 1380px cap,
+     the inline nav (7 links + lang switch + CTA) doesn't fit next to
+     the brand with any margin — it was only safe before the header was
+     contained at all because it had the full viewport to spread out in.
+     Tighten spacing/type here instead of widening the header back out,
+     so it still reads as contained, not full-bleed. */
+  .main-nav{gap:clamp(8px,1vw,16px)}
+  .main-nav a{font-size:.82rem}
   .main-nav a.btn-primary{padding:.9em 1.5em}
 }
 @media (max-width:1080px){
