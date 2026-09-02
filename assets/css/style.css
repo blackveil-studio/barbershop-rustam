@@ -718,7 +718,7 @@ section{position:relative}
   .section-head{flex-direction:column; align-items:flex-start; gap:14px}
   .team-grid{grid-template-columns:repeat(2,1fr)}
   .tier{grid-template-columns:auto 1fr; row-gap:16px}
-  .tier-price{grid-column:1/3; display:flex; justify-content:space-between; text-align:left; padding-left:68px}
+  .tier-price{grid-column:1/3; display:flex; justify-content:space-between; text-align:left}
   .about, .menu-layout{grid-template-columns:1fr}
   .menu-intro{position:static}
   .menu-photo{height:auto; aspect-ratio:4/5}
