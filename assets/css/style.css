@@ -32,7 +32,7 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::as{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
 }
 
 body{
@@ -731,10 +731,13 @@ section{position:relative}
   .footer-top{grid-template-columns:1fr 1fr}
   .reviews-track{grid-template-columns:1fr}
   /* On a tall narrow viewport the section is height-bound, so the crop
-     is centered horizontally on a 3:2 photo — that lands squarely on
-     the steam/towel/arm in the middle, missing the client's face on
-     the left, which is the actual point of the shot. */
-  .cta-media img{object-position:5% 28%}
+     is centered horizontally — on the homepage's steam photo that lands
+     squarely on the towel/arm in the middle, missing the client's face
+     on the left. Scoped to that specific photo by filename: the
+     Atmosfera page uses a different CTA photo (cta-trim.webp) where the
+     face sits centered, so it needs the default centered crop, not this
+     shift — applying this to both was actively wrong for that one. */
+  .cta-media img[src*="cta-steam"]{object-position:5% 28%}
   .reels-grid{
     display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px;
     margin-inline:calc(var(--gutter) * -1); padding-inline:var(--gutter); padding-bottom:6px;
