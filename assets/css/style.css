@@ -141,8 +141,7 @@ h1,h2,h3,h4{
 /* ===================== HEADER ===================== */
 .site-header{
   position:fixed; inset:0 0 auto 0; z-index:80;
-  padding:18px var(--gutter);
-  display:flex; align-items:center; justify-content:space-between;
+  padding-block:18px;
   transition:background-color .4s, padding .4s, border-color .4s;
   border-bottom:1px solid transparent;
   background:linear-gradient(180deg, rgba(15,14,11,.82) 0%, rgba(15,14,11,.68) 70%, rgba(15,14,11,.5) 100%);
@@ -152,6 +151,10 @@ h1,h2,h3,h4{
   backdrop-filter:blur(10px);
   padding-block:14px;
   border-color:var(--line-dark);
+}
+.header-inner{
+  max-width:var(--container); margin-inline:auto; padding-inline:var(--gutter);
+  display:flex; align-items:center; justify-content:space-between;
 }
 .brand{
   font-family:var(--serif);
@@ -163,10 +166,10 @@ h1,h2,h3,h4{
 .brand strong{font-style:italic}
 .brand span{font-family:var(--sans); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-dim)}
 
-.main-nav{display:flex; align-items:center; gap:clamp(14px,1.8vw,26px)}
+.main-nav{display:flex; align-items:center; gap:clamp(12px,1.4vw,20px)}
 .main-nav a{
   font-size:.86rem; letter-spacing:.01em; font-weight:500;
-  color:var(--cream-dim);
+  color:var(--cream-dim); white-space:nowrap;
   position:relative; padding-bottom:4px;
 }
 .main-nav a::after{
@@ -218,7 +221,8 @@ h1,h2,h3,h4{
 }
 .hero-copy{
   position:relative; z-index:2; width:100%;
-  padding:0 clamp(28px,5vw,64px) 70px;
+  max-width:var(--container); margin-inline:auto;
+  padding:0 var(--gutter) 70px;
   display:flex; flex-direction:column; gap:26px;
 }
 .hero h1{
@@ -697,6 +701,17 @@ section{position:relative}
 .person-gallery .note{margin-top:18px; font-size:.8rem; color:var(--cream-faint)}
 
 /* ===================== RESPONSIVE ===================== */
+@media (max-width:1300px) and (min-width:1081px){
+  /* Between the mobile nav breakpoint and the site's 1240px content
+     container, the inline nav (7 links + lang switch + CTA) is too wide
+     for the now-contained header to fit with any margin — it was only
+     safe before because the header ignored the container and just used
+     the full viewport. Tighten spacing/type here instead of widening
+     the header back out, so it still lines up with the rest of the page. */
+  .main-nav{gap:clamp(8px,1vw,14px)}
+  .main-nav a{font-size:.8rem}
+  .main-nav a.btn-primary{padding:.9em 1.5em}
+}
 @media (max-width:1080px){
   /* .hero-scroll is bottom:34px, absolutely positioned — on desktop the
      button row is one line and never reaches that far down. On mobile
