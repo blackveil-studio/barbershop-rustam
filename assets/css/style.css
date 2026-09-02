@@ -205,9 +205,14 @@ h1,h2,h3,h4{
 .hero-media img{width:100%; height:100%; object-fit:cover; object-position:50% 38%; will-change:transform}
 .hero-media::after{
   content:""; position:absolute; inset:0;
-  background:
-    linear-gradient(180deg, rgba(12,11,9,.3) 0%, rgba(12,11,9,.06) 22%, rgba(12,11,9,.14) 46%, rgba(12,11,9,.48) 78%, rgba(12,11,9,.62) 100%),
-    linear-gradient(90deg, rgba(12,11,9,.22) 0%, rgba(12,11,9,.05) 40%, transparent 65%);
+  /* h1 has no max-width in px terms (just 16ch, which at this font-size
+     runs wide) — on a big screen the second line reaches well past the
+     old horizontal gradient's 65% fade-out point, landing on the
+     brightest, busiest part of the photo (the clippers) with almost no
+     scrim. Dropped the horizontal falloff and darkened the vertical
+     gradient evenly instead, so legibility doesn't depend on how far
+     right a given line of text happens to run. */
+  background:linear-gradient(180deg, rgba(12,11,9,.38) 0%, rgba(12,11,9,.14) 22%, rgba(12,11,9,.3) 46%, rgba(12,11,9,.66) 78%, rgba(12,11,9,.8) 100%);
 }
 .hero-copy{
   position:relative; z-index:2; width:100%;
@@ -685,15 +690,6 @@ section{position:relative}
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width:1080px){
-  /* The horizontal component of the hero gradient darkens only the left
-     ~65% of the photo — tuned for desktop, where hero-copy is a narrow
-     column on the left. On mobile the headline runs edge to edge, so
-     its right portion sat over an under-scrimmed, busy part of the
-     photo and read as blending into it. Drop the horizontal falloff
-     and darken the vertical gradient evenly across the full width. */
-  .hero-media::after{
-    background:linear-gradient(180deg, rgba(12,11,9,.38) 0%, rgba(12,11,9,.14) 22%, rgba(12,11,9,.3) 46%, rgba(12,11,9,.66) 78%, rgba(12,11,9,.8) 100%);
-  }
   /* .hero-scroll is bottom:34px, absolutely positioned — on desktop the
      button row is one line and never reaches that far down. On mobile
      the two buttons wrap onto two lines, so the taller button stack
