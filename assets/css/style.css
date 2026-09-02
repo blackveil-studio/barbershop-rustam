@@ -205,19 +205,16 @@ h1,h2,h3,h4{
 .hero-media img{width:100%; height:100%; object-fit:cover; object-position:50% 38%; will-change:transform}
 .hero-media::after{
   content:""; position:absolute; inset:0;
-  /* h1 has no max-width in px terms (just 16ch, which at this font-size
-     runs wide) — on a big screen the second line reaches well past the
-     old horizontal gradient's 65% fade-out point, landing on the
-     brightest, busiest part of the photo (the clippers) with almost no
-     scrim. Dropped the horizontal falloff. Measured where the headline
-     actually sits (44%-75% of hero height, bottom-anchored column) and
-     the previous vertical curve dipped to .14-.3 right through that
-     exact band — kept the top of the photo relatively clear (0-20%,
-     where there's never any text) but raised the floor across the
-     40-100% band where the headline, subtext and buttons actually live,
-     so legibility no longer depends on which part of a busy flatlay
-     happens to sit behind a given line. */
-  background:linear-gradient(180deg, rgba(12,11,9,.28) 0%, rgba(12,11,9,.22) 18%, rgba(12,11,9,.44) 38%, rgba(12,11,9,.62) 65%, rgba(12,11,9,.82) 100%);
+  /* Darkening the whole frame evenly (previous round) fixed legibility
+     but flattened the product photo everywhere, including the right
+     side and top where there's no text at all. Pulled back to a light
+     overall wash and put the actual contrast into one soft pool
+     anchored where the copy block sits (left, lower half) — strong
+     enough right behind the text, fading out well before the right
+     edge so the clippers stay visible and lit. */
+  background:
+    radial-gradient(ellipse 62% 78% at 26% 72%, rgba(12,11,9,.8) 0%, rgba(12,11,9,.55) 42%, rgba(12,11,9,.2) 72%, transparent 100%),
+    linear-gradient(180deg, rgba(12,11,9,.04) 0%, rgba(12,11,9,.08) 55%, rgba(12,11,9,.18) 100%);
 }
 .hero-copy{
   position:relative; z-index:2; width:100%;
