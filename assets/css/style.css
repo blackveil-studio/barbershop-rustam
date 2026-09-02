@@ -10,10 +10,10 @@
   --accent-dim:#7a5a34;
   --red:#b23b2c;
   --cream:#efe7d6;
-  --cream-dim:rgba(239,231,214,.62);
-  --cream-faint:rgba(239,231,214,.34);
-  --ink-dim:rgba(19,18,16,.62);
-  --ink-faint:rgba(19,18,16,.38);
+  --cream-dim:rgba(239,231,214,.72);
+  --cream-faint:rgba(239,231,214,.55);
+  --ink-dim:rgba(19,18,16,.72);
+  --ink-faint:rgba(19,18,16,.6);
   --line-light:rgba(19,18,16,.13);
 
   --serif:"Newsreader", "Iowan Old Style", Georgia, serif;
@@ -161,7 +161,7 @@ h1,h2,h3,h4{
   position:relative; z-index:96;
 }
 .brand strong{font-style:italic}
-.brand span{font-family:var(--sans); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-faint)}
+.brand span{font-family:var(--sans); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-dim)}
 
 .main-nav{display:flex; align-items:center; gap:clamp(14px,1.8vw,26px)}
 .main-nav a{
@@ -705,7 +705,7 @@ section{position:relative}
   .menu-photo{height:auto; aspect-ratio:4/5}
   .reviews-track{grid-template-columns:1fr}
   .review-card:nth-child(1){grid-row:auto}
-  .review-card:not(:nth-child(1)){border-left:0; padding-left:0}
+  .review-card:not(:nth-child(1)){border-left:0}
   .hero-strip .wrap{grid-template-columns:1fr; gap:14px}
   .hero-strip div + div{border-left:0; padding-left:0; border-top:1px solid var(--line-dark); padding-top:14px}
   .section-paper .hero-strip div + div{border-color:var(--line-light)}
@@ -723,8 +723,8 @@ section{position:relative}
   .person-gallery .grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:640px){
-  .team-grid{grid-template-columns:1fr; max-width:340px; margin-inline:auto}
-  .menu-group{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(2,1fr); gap:14px}
+  .menu-group{column-gap:16px}
   .footer-top{grid-template-columns:1fr}
   .reel{width:58vw}
   .gallery-marquee{grid-template-columns:1fr 1fr; height:auto; row-gap:12px}
