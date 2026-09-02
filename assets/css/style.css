@@ -165,6 +165,7 @@ h1,h2,h3,h4{
 }
 .brand strong{font-style:italic}
 .brand span{font-family:var(--sans); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-dim)}
+.site-header .brand span{display:none}
 
 .main-nav{display:flex; align-items:center; gap:clamp(12px,1.4vw,20px)}
 .main-nav a{
